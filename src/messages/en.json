@@ -1,0 +1,14 @@
+{
+    "Navbar": {
+        "title": "Nezha",
+        "home": "Home",
+        "about": "About",
+        "contact": "Contact",
+        "language": "Language",
+        "theme": "Theme"
+    },
+    "Index": {
+        "title": "Welcome to Nezha",
+        "description": "Premium Next.js Starter"
+    }
+}

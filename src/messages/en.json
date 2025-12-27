@@ -60,6 +60,11 @@
         "consumption": "Power Consumption",
         "headSize": "Head Size",
         "workSpace": "Work Space",
+        "warrantyTitle": "2-Year Warranty",
+        "warrantyDesc": "Industrial Grade",
+        "shippingTitle": "Global Shipping",
+        "shippingDesc": "Worldwide Logistics",
+        "responseTime": "Response time typically within 24 business hours.",
         "relatedProducts": "Explore Other Machines"
     },
     "Contact": {

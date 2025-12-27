@@ -100,15 +100,15 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                         <div className="p-4 rounded-xl border border-border bg-accent/50 flex items-center gap-3">
                             <ShieldCheck className="h-8 w-8 text-primary" />
                             <div className="text-xs">
-                                <p className="font-bold">2-Year Warranty</p>
-                                <p className="text-muted-foreground">Industrial Grade</p>
+                                <p className="font-bold">{t('warrantyTitle')}</p>
+                                <p className="text-muted-foreground">{t('warrantyDesc')}</p>
                             </div>
                         </div>
                         <div className="p-4 rounded-xl border border-border bg-accent/50 flex items-center gap-3">
                             <Globe className="h-8 w-8 text-primary" />
                             <div className="text-xs">
-                                <p className="font-bold">Global Shipping</p>
-                                <p className="text-muted-foreground">Worldwide Logistics</p>
+                                <p className="font-bold">{t('shippingTitle')}</p>
+                                <p className="text-muted-foreground">{t('shippingDesc')}</p>
                             </div>
                         </div>
                     </div>
@@ -152,7 +152,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                     <div className="pt-6">
                         <ContactDialog productName={machine.name} />
                         <p className="text-center text-xs text-muted-foreground mt-4 italic">
-                            Response time typically within 24 business hours.
+                            {t('responseTime')}
                         </p>
                     </div>
                 </div>

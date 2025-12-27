@@ -17,7 +17,7 @@ export function Navbar() {
                         <div className="bg-primary p-1.5 rounded-lg shadow-lg shadow-primary/20">
                             <Cpu className="h-5 w-5 text-primary-foreground" />
                         </div>
-                        <span className="font-bold text-xl tracking-tight uppercase">
+                        <span lang="en" className="font-bold text-xl tracking-tight uppercase">
                             {t('title')}
                         </span>
                     </Link>

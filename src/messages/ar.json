@@ -60,6 +60,11 @@
         "consumption": "استهلاك الطاقة",
         "headSize": "حجم الرأس",
         "workSpace": "مساحة العمل",
+        "warrantyTitle": "ضمان لمدة سنتين",
+        "warrantyDesc": "درجة صناعية",
+        "shippingTitle": "شحن عالمي",
+        "shippingDesc": "لوجستيات عالمية",
+        "responseTime": "وقت الاستجابة عادة ما يكون في غضون 24 ساعة عمل.",
         "relatedProducts": "استكشف آلات أخرى"
     },
     "Contact": {

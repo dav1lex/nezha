@@ -20,7 +20,7 @@ export function Footer() {
                             <div className="bg-primary p-1.5 rounded-lg shadow-lg">
                                 <Cpu className="h-5 w-5 text-primary-foreground" />
                             </div>
-                            <span className="font-bold text-xl tracking-tight uppercase">
+                            <span lang="en" className="font-bold text-xl tracking-tight uppercase">
                                 {tNav('title')}
                             </span>
                         </Link>

@@ -28,17 +28,15 @@ export async function POST(request: Request) {
                 // Required for many cPanel setups on 587
                 ciphers: 'SSLv3',
                 rejectUnauthorized: false
-            },
-            debug: true,
-            logger: true
+            }
         });
 
-        // Email Content
-        const subject = productName
+        // Email Content for Sales
+        const subjectForSales = productName
             ? `New Quote Request for: ${productName}`
             : `New Contact Form Submission from ${name}`;
 
-        const htmlContent = `
+        const htmlContentForSales = `
             <h2>New Inquiry from Website</h2>
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Email:</strong> ${email}</p>
@@ -49,14 +47,40 @@ export async function POST(request: Request) {
             <p>${message.replace(/\n/g, '<br>')}</p>
         `;
 
-        // Send Email
+        // 1. Send main notification to Sales
         await transporter.sendMail({
             from: `"Pearl Machine Website" <${process.env.SMTP_USER}>`,
-            to: process.env.CONTACT_EMAIL, // Where you want to receive inquiries
-            replyTo: email, // So you can hit "Reply" and email the customer directly
-            subject: subject,
-            html: htmlContent,
+            to: process.env.CONTACT_EMAIL, // sales@pearlmachine.com
+            replyTo: email,
+            subject: subjectForSales,
+            html: htmlContentForSales,
         });
+
+        // 2. Send "Thank You" Auto-Responder to the User
+        // Wrapped in a separate try-catch so if the user's email is invalid, 
+        // the main process doesn't fail.
+        try {
+            await transporter.sendMail({
+                from: `"Pearl Machine" <${process.env.SMTP_USER}>`,
+                to: email,
+                subject: productName
+                    ? `Thank you for your interest in ${productName}`
+                    : "Thank you for contacting Pearl Machine",
+                html: `
+                    <div style="font-family: sans-serif; padding: 20px; color: #333;">
+                        <h2 style="color: #000;">Hello ${name},</h2>
+                        <p>Thank you for reaching out to <strong>Pearl Machine</strong>.</p>
+                        <p>We have received your inquiry${productName ? ` regarding the <strong>${productName}</strong>` : ''} and our sales team will get back to you as soon as possible.</p>
+                        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
+                        <p style="font-size: 0.9em; color: #666;">This is an automated message, please do not reply directly to this email.</p>
+                        <p style="font-size: 0.9em; color: #666;"><strong>Website:</strong> <a href="https://pearlmachine.com">pearlmachine.com</a></p>
+                    </div>
+                `,
+            });
+        } catch (autoResponderError) {
+            // Log it but don't stop the main success response
+            console.error('Auto-responder failed (invalid email?):', autoResponderError);
+        }
 
         return NextResponse.json({ success: true });
     } catch (error) {

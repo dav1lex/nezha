@@ -28,6 +28,7 @@ export function ContactForm({ productName, onSuccess }: ContactFormProps) {
             email: formData.get('email'),
             phone: formData.get('phone'),
             message: formData.get('message'),
+            company_tax_id: formData.get('company_tax_id'),
             productName: productName,
         }
 
@@ -83,6 +84,11 @@ export function ContactForm({ productName, onSuccess }: ContactFormProps) {
                     {t('productInquiry', { product: productName })}
                 </div>
             )}
+
+            {/* Honeypot field for bots */}
+            <div className="hidden" aria-hidden="true">
+                <Input name="company_tax_id" tabIndex={-1} autoComplete="off" />
+            </div>
 
             <div className="space-y-2">
                 <Label htmlFor="name">{t('name')}</Label>

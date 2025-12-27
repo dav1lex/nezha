@@ -5,7 +5,13 @@ import nodemailer from 'nodemailer';
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { name, email, phone, message, productName } = body;
+        const { name, email, phone, message, productName, company_tax_id } = body;
+
+        // Honeypot check: If the hidden field is filled, it's a bot.
+        if (company_tax_id) {
+            console.warn('Bot detected via honeypot');
+            return NextResponse.json({ success: true }); // Return success to fool the bot
+        }
 
         // Validation
         if (!name || !email || !message) {

@@ -52,7 +52,7 @@ export function ProductCard({ machine }: ProductCardProps) {
             </CardContent>
             <CardFooter className="p-4 pt-0">
                 <Button asChild className="w-full">
-                    <Link href={`/products/${machine.slug}`}>
+                    <Link href={`/${locale}/products/${machine.slug}`}>
                         {t('viewDetails')}
                     </Link>
                 </Button>

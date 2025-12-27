@@ -4,12 +4,20 @@
         "home": "Anasayfa",
         "about": "Hakkımızda",
         "contact": "İletişim",
+        "products": "Ürünler",
         "language": "Dil",
         "theme": "Tema"
     },
     "Index": {
-        "title": "Nezha'ya Hoşgeldiniz",
-        "description": "Premium Next.js Başlangıç Kiti"
+        "title": "Nezha - Endüstriyel Mükemmellik",
+        "description": "Birinci Sınıf Otomatik İnci ve Trok Çakma Makineleri",
+        "heroTitle": "İnci Çakma Teknolojisinde Standart",
+        "heroSubtitle": "Küresel tekstil endüstrisi için hassas mühendislik. Eşsiz hız ve güvenilirliği deneyimleyin.",
+        "browseMachines": "Kataloğu İncele",
+        "whyChooseUs": "Lider Markalar Neden Bizi Seçiyor?",
+        "experience": "20+ Yıllık Deneyim",
+        "quality": "Patentli Hassasiyet",
+        "support": "Global Destek"
     },
     "Products": {
         "title": "Makinelerimiz",

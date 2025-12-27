@@ -4,12 +4,20 @@
         "home": "Home",
         "about": "About",
         "contact": "Contact",
+        "products": "Products",
         "language": "Language",
         "theme": "Theme"
     },
     "Index": {
-        "title": "Welcome to Nezha",
-        "description": "Premium Next.js Starter"
+        "title": "Nezha - Industrial Excellence",
+        "description": "Premium Automatic Pearl & Stud Attaching Machinery",
+        "heroTitle": "The Standard in Pearl Attaching Tech",
+        "heroSubtitle": "Precision engineering for the global textile industry. Experience unmatched speed and reliability.",
+        "browseMachines": "Browse Catalog",
+        "whyChooseUs": "Why Leading Brands Choose Us",
+        "experience": "20+ Years Experience",
+        "quality": "Patented Precision",
+        "support": "Global Support"
     },
     "Products": {
         "title": "Our Machines",

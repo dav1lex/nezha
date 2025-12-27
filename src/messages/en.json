@@ -10,5 +10,10 @@
     "Index": {
         "title": "Welcome to Nezha",
         "description": "Premium Next.js Starter"
+    },
+    "Products": {
+        "title": "Our Machines",
+        "description": "High-performance textile machinery for your business",
+        "viewDetails": "View Details"
     }
 }

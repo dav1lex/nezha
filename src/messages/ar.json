@@ -10,5 +10,10 @@
     "Index": {
         "title": "مرحباً بكم في نزهة",
         "description": "بداية مميزة لمشروع Next.js"
+    },
+    "Products": {
+        "title": "منتجاتنا",
+        "description": "آلات نسيج عالية الأداء لأعمالك",
+        "viewDetails": "عرض التفاصيل"
     }
 }

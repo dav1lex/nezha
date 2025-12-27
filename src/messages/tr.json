@@ -10,5 +10,10 @@
     "Index": {
         "title": "Nezha'ya Hoşgeldiniz",
         "description": "Premium Next.js Başlangıç Kiti"
+    },
+    "Products": {
+        "title": "Makinelerimiz",
+        "description": "İşiniz için yüksek performanslı tekstil makineleri",
+        "viewDetails": "Detayları Gör"
     }
 }

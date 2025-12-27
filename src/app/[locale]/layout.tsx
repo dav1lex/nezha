@@ -6,6 +6,7 @@ import { getMessages } from 'next-intl/server';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { Analytics } from "@vercel/analytics/next";
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
 
@@ -100,6 +101,7 @@ export default async function LocaleLayout({
                             <main className="flex-1">{children}</main>
                             <Footer />
                         </div>
+                        <Analytics />
                     </ThemeProvider>
                 </NextIntlClientProvider>
             </body>

@@ -15,5 +15,14 @@
         "title": "Makinelerimiz",
         "description": "İşiniz için yüksek performanslı tekstil makineleri",
         "viewDetails": "Detayları Gör"
+    },
+    "ProductDetails": {
+        "specs": "Teknik Özellikler",
+        "features": "Ana Özellikler",
+        "getQuote": "Teklif Al",
+        "speed": "Hız",
+        "size": "Boyut",
+        "weight": "Ağırlık",
+        "power": "Güç"
     }
 }

@@ -15,5 +15,14 @@
         "title": "Our Machines",
         "description": "High-performance textile machinery for your business",
         "viewDetails": "View Details"
+    },
+    "ProductDetails": {
+        "specs": "Specifications",
+        "features": "Key Features",
+        "getQuote": "Get a Quote",
+        "speed": "Speed",
+        "size": "Size",
+        "weight": "Weight",
+        "power": "Power"
     }
 }

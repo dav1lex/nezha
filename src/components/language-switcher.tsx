@@ -9,10 +9,8 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Languages } from "lucide-react"
 
 export function LanguageSwitcher() {
-    const t = useTranslations('Navbar')
     const locale = useLocale()
     const router = useRouter()
     const pathname = usePathname()
@@ -22,27 +20,30 @@ export function LanguageSwitcher() {
     }
 
     const languages = [
-        { code: 'en', label: 'English' },
-        { code: 'ar', label: 'العربية' },
-        { code: 'tr', label: 'Türkçe' },
+        { code: 'en', label: 'English', flag: '🇺🇸' },
+        { code: 'tr', label: 'Türkçe', flag: '🇹🇷' },
+        { code: 'ar', label: 'العربية', flag: '🇸🇦' },
     ]
+
+    const currentLanguage = languages.find(lang => lang.code === locale)
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                    <Languages className="h-[1.2rem] w-[1.2rem]" />
-                    <span className="sr-only">{t('language')}</span>
+                <Button variant="ghost" className="gap-2 px-2 hover:bg-accent transition-colors">
+                    <span className="text-xl leading-none">{currentLanguage?.flag}</span>
+                    <span className="hidden sm:inline-block font-medium">{currentLanguage?.label}</span>
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="end" className="w-[160px] p-2 bg-background/95 backdrop-blur border-border/50">
                 {languages.map((lang) => (
                     <DropdownMenuItem
                         key={lang.code}
                         onClick={() => handleLanguageChange(lang.code)}
-                        className={locale === lang.code ? "bg-accent" : ""}
+                        className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer transition-colors ${locale === lang.code ? "bg-primary/10 text-primary font-bold" : "hover:bg-accent"}`}
                     >
-                        {lang.label}
+                        <span className="text-xl">{lang.flag}</span>
+                        <span className="text-sm">{lang.label}</span>
                     </DropdownMenuItem>
                 ))}
             </DropdownMenuContent>

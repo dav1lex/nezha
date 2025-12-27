@@ -21,7 +21,7 @@ export default function HomePage() {
                 <div className="container mx-auto px-4 md:px-8 flex flex-col items-center text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
                         <Award className="h-3.5 w-3.5" />
-                        Leading Industrial Provider
+                        {t('heroBadge')}
                     </div>
 
                     <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-8 max-w-5xl text-balance leading-[0.95]">
@@ -57,21 +57,21 @@ export default function HomePage() {
                         {
                             icon: Zap,
                             title: t('quality'),
-                            desc: "Patented high-speed technology with up to 275 pcs/min capacity.",
+                            desc: t('qualityDesc'),
                             color: "text-amber-500",
                             bgColor: "bg-amber-500/10"
                         },
                         {
                             icon: Globe2,
                             title: t('support'),
-                            desc: "Engineered for 24/7 industrial use with global on-site maintenance.",
+                            desc: t('supportDesc'),
                             color: "text-blue-500",
                             bgColor: "bg-blue-500/10"
                         },
                         {
                             icon: Target,
                             title: t('experience'),
-                            desc: "Decades of specialization in pearl and stud attachment precision.",
+                            desc: t('experienceDesc'),
                             color: "text-emerald-500",
                             bgColor: "bg-emerald-500/10"
                         },
@@ -96,13 +96,13 @@ export default function HomePage() {
                     </div>
                     <Button variant="link" asChild className="text-lg group">
                         <Link href="/products" className="flex items-center gap-2">
-                            View Entire Catalog <ArrowRight className="h-5 w-5 rtl:rotate-180 group-hover:translate-x-1 transition-transform" />
+                            {t('viewCatalog')} <ArrowRight className="h-5 w-5 rtl:rotate-180 group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </Button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                    {machines.slice(0, 3).map((machine) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    {machines.slice(0, 4).map((machine) => (
                         <ProductCard key={machine.id} machine={machine} />
                     ))}
                 </div>

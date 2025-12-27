@@ -1,6 +1,6 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 
-const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,14 +8,18 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'pearlmachine.com',
+                hostname: 'cdn.pearlmachine.com',
+                pathname: '/**',
             },
             {
                 protocol: 'https',
-                hostname: 'cdn.pearlmachine.com', // Future proofing
+                hostname: 'pearlmachine.com',
+                pathname: '/**',
             }
         ],
     },
+    // Optional: add trailing slash configuration if needed for certain SEO setups
+    // trailingSlash: true,
 };
 
 export default withNextIntl(nextConfig);

@@ -19,8 +19,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Nezha - Premium Starter",
-    description: "A premium Next.js starter kit",
+    title: "Pearl Machine",
+    description: "Premium Automatic Pearl & Stud Attaching Machinery",
 };
 
 export default async function LocaleLayout({

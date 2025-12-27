@@ -18,18 +18,41 @@ export function ContactForm({ productName, onSuccess }: ContactFormProps) {
     const [isSubmitting, setIsSubmitting] = React.useState(false)
     const [isSuccess, setIsSuccess] = React.useState(false)
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setIsSubmitting(true)
 
-        // Simulate form submission
-        await new Promise(resolve => setTimeout(resolve, 1000))
+        const formData = new FormData(e.currentTarget)
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            message: formData.get('message'),
+            productName: productName,
+        }
 
-        setIsSubmitting(false)
-        setIsSuccess(true)
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
 
-        if (onSuccess) {
-            setTimeout(onSuccess, 2000)
+            if (!response.ok) {
+                throw new Error('Failed to send message')
+            }
+
+            setIsSuccess(true)
+            if (onSuccess) {
+                setTimeout(onSuccess, 2000)
+            }
+        } catch (error) {
+            console.error('Submission error:', error)
+            alert('Something went wrong. Please try again.')
+        } finally {
+            setIsSubmitting(false)
         }
     }
 
@@ -63,17 +86,17 @@ export function ContactForm({ productName, onSuccess }: ContactFormProps) {
 
             <div className="space-y-2">
                 <Label htmlFor="name">{t('name')}</Label>
-                <Input id="name" required placeholder="" className="bg-background" />
+                <Input id="name" name="name" required placeholder="" className="bg-background" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                     <Label htmlFor="email">{t('email')}</Label>
-                    <Input id="email" type="email" required className="bg-background" />
+                    <Input id="email" name="email" type="email" required className="bg-background" />
                 </div>
                 <div className="space-y-2">
                     <Label htmlFor="phone">{t('phone')}</Label>
-                    <Input id="phone" type="tel" className="bg-background" />
+                    <Input id="phone" name="phone" type="tel" className="bg-background" />
                 </div>
             </div>
 
@@ -81,6 +104,7 @@ export function ContactForm({ productName, onSuccess }: ContactFormProps) {
                 <Label htmlFor="message">{t('message')}</Label>
                 <Textarea
                     id="message"
+                    name="message"
                     required
                     className="min-h-[120px] bg-background"
                     defaultValue={productName ? `I am interested in ${productName}. Please send me a quote regarding pricing and availability.` : ''}

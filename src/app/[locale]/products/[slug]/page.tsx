@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { machines } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
 import { ContactDialog } from '@/components/contact-dialog';
+import { ProductImageGallery } from '@/components/product-image-gallery';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Separator } from '@/components/ui/separator';
@@ -22,10 +23,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     // SEO: Dynamic metadata generation
     return {
-        title: `${machine.name} | Nezha`,
+        title: `${machine.name} | Pearl Machine`,
         description: machine.description[locale as 'en' | 'ar' | 'tr'],
         openGraph: {
-            images: [machine.image],
+            images: [machine.images[0]],
         },
     };
 }
@@ -71,17 +72,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 {/* Left Column: Image Gallery (Single Image for now) */}
                 <div className="space-y-4">
-                    <div className="relative aspect-square w-full overflow-hidden rounded-xl border bg-muted">
-                        {/* We can add a gallery carousel later, for now the main image */}
-                        <Image
-                            src={machine.image}
-                            alt={machine.name}
-                            fill
-                            className="object-cover"
-                            priority
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                        />
-                    </div>
+                    <ProductImageGallery images={machine.images} name={machine.name} />
                 </div>
 
                 {/* Right Column: Product Details */}

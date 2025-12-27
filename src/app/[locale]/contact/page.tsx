@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Mail, MapPin, Phone } from 'lucide-react';
 
 export const metadata = {
-    title: 'Contact Us | Nezha',
+    title: 'Contact Us | PearlMachine',
     description: 'Get in touch with our expert team for inquiries about our pearl attaching machines.',
 };
 

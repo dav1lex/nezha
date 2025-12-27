@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { useTranslations } from "next-intl"
-import Link from "next/link"
+import { Link } from "@/i18n/routing"
 import Image from "next/image"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -23,22 +23,23 @@ export function ProductCard({ machine }: ProductCardProps) {
     return (
         <Card className="overflow-hidden group hover:shadow-lg transition-all duration-300">
             <CardHeader className="p-0">
-                <div className="relative aspect-video w-full overflow-hidden bg-muted">
+                <div className="relative aspect-video w-full overflow-hidden bg-white">
                     {/* SKELETON LOADER: Shows while image is loading */}
                     {isLoading && (
                         <Skeleton className="h-full w-full absolute inset-0 z-10" />
                     )}
 
-                    <Image
-                        src={machine.image}
-                        alt={machine.name}
-                        fill
-                        className={`object-cover transition-all duration-300 group-hover:scale-105 ${isLoading ? 'opacity-0' : 'opacity-100'
-                            }`}
-                        onLoad={() => setIsLoading(false)}
-                        // We use sizes to tell the browser how large the image will be at different breakpoints
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
+                    <Link href={`/products/${machine.slug}`}>
+                        <Image
+                            src={machine.images[0]}
+                            alt={machine.name}
+                            fill
+                            className={`object-contain transition-all duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'
+                                }`}
+                            onLoad={() => setIsLoading(false)}
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                    </Link>
                 </div>
             </CardHeader>
             <CardContent className="p-4">
@@ -52,7 +53,7 @@ export function ProductCard({ machine }: ProductCardProps) {
             </CardContent>
             <CardFooter className="p-4 pt-0">
                 <Button asChild className="w-full">
-                    <Link href={`/${locale}/products/${machine.slug}`}>
+                    <Link href={`/products/${machine.slug}`}>
                         {t('viewDetails')}
                     </Link>
                 </Button>

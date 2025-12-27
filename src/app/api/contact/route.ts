@@ -61,11 +61,11 @@ export async function POST(request: Request) {
         // the main process doesn't fail.
         try {
             await transporter.sendMail({
-                from: `"Pearl Machine" <${process.env.SMTP_USER}>`,
+                from: `"Pearl Machine Sales" <${process.env.SMTP_USER}>`,
                 to: email,
                 subject: productName
-                    ? `Thank you for your interest in ${productName}`
-                    : "Thank you for contacting Pearl Machine",
+                    ? `Quick Update: Your Quote for ${productName}`
+                    : "Message Received - Pearl Machine Sales",
                 html: `
                     <div style="font-family: sans-serif; padding: 20px; color: #333;">
                         <h2 style="color: #000;">Hello ${name},</h2>

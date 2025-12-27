@@ -24,5 +24,18 @@
         "size": "Boyut",
         "weight": "Ağırlık",
         "power": "Güç"
+    },
+    "Contact": {
+        "title": "Bize Ulaşın",
+        "description": "Uzman ekibimizle iletişime geçin",
+        "form": {
+            "name": "Ad Soyad",
+            "email": "E-posta Adresi",
+            "phone": "Telefon Numarası",
+            "message": "Mesajınız",
+            "submit": "Mesaj Gönder",
+            "success": "Mesajınız başarıyla gönderildi!",
+            "productInquiry": "Ürün hakkında bilgi: {product}"
+        }
     }
 }

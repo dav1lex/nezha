@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { machines } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { ContactDialog } from '@/components/contact-dialog';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Separator } from '@/components/ui/separator';
@@ -144,9 +144,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
                     {/* Call to Action */}
                     <div className="pt-4">
-                        <Button size="lg" className="w-full text-lg h-12">
-                            {t('getQuote')}
-                        </Button>
+                        <ContactDialog productName={machine.name} />
                     </div>
                 </div>
             </div>

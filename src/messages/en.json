@@ -24,5 +24,18 @@
         "size": "Size",
         "weight": "Weight",
         "power": "Power"
+    },
+    "Contact": {
+        "title": "Contact Us",
+        "description": "Get in touch with our expert team",
+        "form": {
+            "name": "Full Name",
+            "email": "Email Address",
+            "phone": "Phone Number",
+            "message": "Message",
+            "submit": "Send Message",
+            "success": "Message sent successfully!",
+            "productInquiry": "Inquiry about: {product}"
+        }
     }
 }

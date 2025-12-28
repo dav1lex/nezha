@@ -13,7 +13,7 @@ export default function HomePage() {
     return (
         <div className="flex flex-col gap-24 pb-20">
             {/* HERO SECTION */}
-            <section className="relative pt-24 pb-36 overflow-hidden">
+            <section className="relative min-h-[calc(100vh-4rem)] flex flex-col justify-center overflow-hidden">
                 {/* Background Decorative Gradient */}
                 <div className="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3 animate-pulse" />
                 <div className="absolute bottom-0 left-0 -z-10 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -translate-x-1/4 translate-y-1/4" />

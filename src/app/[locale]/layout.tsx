@@ -32,12 +32,43 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
             : "Premium Automatic Pearl & Stud Attaching Machinery";
 
     return {
+        metadataBase: new URL('https://pearlmachine.com'),
         title: {
             default: title,
             template: `%s | Pearl Machine`
         },
         description: description,
-        keywords: ["pearl machine", "textile machinery", "automatic pearl attacher", "industrial machinery", "turkey machinery"],
+        keywords: [
+            "pearl machine",
+            "automatic pearl setting machine",
+            "rivet attaching machine",
+            "textile machinery",
+            "stud fixing machine",
+            "industrial garment machinery",
+            "pearl machine turkey",
+            "high speed pearl attacher"
+        ],
+        alternates: {
+            canonical: `/${locale}`,
+            languages: {
+                'en': '/en',
+                'tr': '/tr',
+                'ar': '/ar',
+            },
+        },
+        openGraph: {
+            title: title,
+            description: description,
+            url: `https://pearlmachine.com/${locale}`,
+            siteName: 'Pearl Machine',
+            locale: locale,
+            type: 'website',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: title,
+            description: description,
+        },
     };
 }
 
@@ -62,7 +93,12 @@ export default async function LocaleLayout({
         "@type": "Organization",
         "name": "Pearl Machine",
         "url": "https://pearlmachine.com",
-        "logo": "https://cdn.pearlmachine.com/logo.png", // Assuming a logo exists later
+        "logo": "https://pearlmachine.com/logo.png",
+        "sameAs": [
+            "https://www.instagram.com/pearlmachine",
+            "https://www.facebook.com/pearlmachine",
+            // Add other social profiles if available
+        ],
         "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "+90-532-557-69-93",

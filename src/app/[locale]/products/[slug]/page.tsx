@@ -26,7 +26,32 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
         title: `${machine.name} | Pearl Machine`,
         description: machine.description[locale as 'en' | 'ar' | 'tr'],
+        alternates: {
+            canonical: `/${locale}/products/${slug}`,
+            languages: {
+                'en': `/en/products/${slug}`,
+                'tr': `/tr/products/${slug}`,
+                'ar': `/ar/products/${slug}`,
+            },
+        },
         openGraph: {
+            title: `${machine.name} | Pearl Machine`,
+            description: machine.description[locale as 'en' | 'ar' | 'tr'],
+            url: `https://pearlmachine.com/${locale}/products/${slug}`,
+            images: [
+                {
+                    url: machine.images[0],
+                    width: 1200,
+                    height: 630,
+                    alt: machine.name,
+                }
+            ],
+            type: 'website',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: `${machine.name} | Pearl Machine`,
+            description: machine.description[locale as 'en' | 'ar' | 'tr'],
             images: [machine.images[0]],
         },
     };
@@ -47,8 +72,31 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     const currentLocale = locale as 'en' | 'ar' | 'tr';
     const otherMachines = machines.filter(m => m.slug !== slug).slice(0, 3);
 
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: machine.name,
+        image: machine.images,
+        description: machine.description[currentLocale],
+        brand: {
+            '@type': 'Brand',
+            name: 'Pearl Machine',
+        },
+        offers: {
+            '@type': 'Offer',
+            url: `https://pearlmachine.com/${locale}/products/${slug}`,
+            availability: 'https://schema.org/InStock',
+            priceCurrency: 'USD',
+            price: '0', // Request for Quote
+        }
+    };
+
     return (
         <div className="container mx-auto px-4 py-8">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             {/* Breadcrumbs */}
             <nav className="flex items-center text-sm text-muted-foreground mb-8">
                 <Link href="/" className="hover:text-foreground transition-colors flex items-center gap-1">

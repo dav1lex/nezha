@@ -31,14 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
             ? "آلات تركيب اللؤلؤ والخرز الأوتوماتيكية المتميزة"
             : "Premium Automatic Pearl & Stud Attaching Machinery";
 
-    return {
-        metadataBase: new URL('https://pearlmachine.com'),
-        title: {
-            default: title,
-            template: `%s | Pearl Machine`
-        },
-        description: description,
-        keywords: [
+    const keywords = {
+        en: [
             "pearl machine",
             "automatic pearl setting machine",
             "rivet attaching machine",
@@ -46,8 +40,42 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
             "stud fixing machine",
             "industrial garment machinery",
             "pearl machine turkey",
-            "high speed pearl attacher"
+            "high speed pearl attacher",
+            "automatic rivet setting machine",
+            "pearl attaching machine for textile"
         ],
+        tr: [
+            "inci çakma makinesi",
+            "otomatik inci makinesi",
+            "trok çakma makinesi",
+            "tekstil makineleri",
+            "perçin çakma makinesi",
+            "taş yapıştırma makinesi",
+            "inci makinesi fiyatları",
+            "otomatik perçin makinesi",
+            "tekstil aksesuar makineleri",
+            "istanbul inci makinesi"
+        ],
+        ar: [
+            "ماكينة تركيب اللؤلؤ",
+            "آلة تثبيت الخرز",
+            "ماكينة كبس اللؤلؤ",
+            "آلات نسيج",
+            "ماكينة تركيب الدسر",
+            "معدات صناعة الملابس",
+            "ماكينة لؤلؤ تركية",
+            "آلة تركيب مسامير"
+        ]
+    };
+
+    return {
+        metadataBase: new URL('https://pearlmachine.com'),
+        title: {
+            default: title,
+            template: `%s | Pearl Machine`
+        },
+        description: description,
+        keywords: keywords[locale as keyof typeof keywords] || keywords.en,
         alternates: {
             canonical: `/${locale}`,
             languages: {

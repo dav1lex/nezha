@@ -13,11 +13,13 @@ import { absoluteUrl, company, languageAlternates } from '@/lib/seo';
 const geistSans = Geist({
     variable: "--font-geist-sans",
     subsets: ["latin"],
+    display: "swap",
 });
 
 const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
+    display: "swap",
 });
 
 export function generateStaticParams() {
@@ -98,11 +100,18 @@ export default async function LocaleLayout({
 
     const organizationSchema = {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": ["Organization", "LocalBusiness"],
+        "@id": "https://pearlmachine.com/#organization",
         "name": company.name,
         "legalName": company.legalName,
         "url": "https://pearlmachine.com",
         "logo": "https://pearlmachine.com/logo.png",
+        "image": "https://pearlmachine.com/nt-906-nw_1.jpg",
+        "priceRange": "Contact for quote",
+        "openingHours": [
+            "Mo-Fr 09:00-19:00",
+            "Sa 09:00-17:00"
+        ],
         "sameAs": [
             company.instagram,
             company.facebook,
@@ -127,8 +136,12 @@ export default async function LocaleLayout({
     const websiteSchema = {
         "@context": "https://schema.org",
         "@type": "WebSite",
+        "@id": "https://pearlmachine.com/#website",
         "name": company.name,
         "url": "https://pearlmachine.com",
+        "publisher": {
+            "@id": "https://pearlmachine.com/#organization"
+        },
         "potentialAction": {
             "@type": "SearchAction",
             "target": {

@@ -36,9 +36,9 @@ export const machines: Machine[] = [
             "/nt-906-nw_2.jpg"
         ],
         description: {
-            en: "Advanced dual-color pearl attaching machine. Two colors in the same size can be worked without changing any part, featuring a convenient upper attaching system.",
-            ar: "آلة تركيب لؤلؤ متطورة ثنائية اللون. يمكن العمل بلونين بنفس الحجم دون تغيير أي جزء، مع نظام تركيب علوي مريح.",
-            tr: "Gelişmiş çift renkli inci çakma makinesi. Herhangi bir parça değiştirmeden aynı boyutta iki renk çalışılabilir, kullanışlı üstten takma sistemine sahiptir."
+            en: "The UGR-906-NW is an automatic dual-color pearl attaching machine for garment and textile production. It works with two pearl colors in the same size without changing machine parts, uses upper pearl supply for clearer operator visibility and supports 4 to 16 mm pearl sizes. Laser marking helps place pearls on the intended point, while the lower pin supply removes the need to mark the reverse side of the garment.",
+            ar: "UGR-906-NW آلة أوتوماتيكية لتركيب اللؤلؤ بلونين لإنتاج الملابس والمنسوجات. تعمل بلونين من نفس مقاس اللؤلؤ دون تغيير أجزاء الماكينة، وتستخدم التغذية العلوية لرؤية أوضح للمشغل وتدعم مقاسات اللؤلؤ من 4 إلى 16 مم. يساعد التحديد بالليزر على وضع اللؤلؤ في النقطة المطلوبة، بينما تقلل تغذية الدبابيس من الأسفل الحاجة إلى تعليم الجهة الخلفية من القماش.",
+            tr: "UGR-906-NW, hazır giyim ve tekstil üretimi için otomatik çift renkli inci çakma makinesidir. Makine parçası değiştirmeden aynı ölçüde iki inci rengiyle çalışır, daha net operatör görüşü için üstten inci besleme kullanır ve 4 ile 16 mm inci ölçülerini destekler. Lazer işaretleme incinin hedef noktaya yerleşmesine yardımcı olur, alttan çivi besleme ise giysinin ters tarafını işaretleme ihtiyacını azaltır."
         },
         features: {
             en: [
@@ -80,7 +80,7 @@ export const machines: Machine[] = [
         specs: [
             { label: "speed", value: "190 pcs. / minute" },
             { label: "pearlSize", value: "4~16 mm (pearl size is optional)" },
-            { label: "colors", value: "refer to the last page on the catalogue" },
+            { label: "colors", value: "Contact for current color options" },
             { label: "weight", value: "65 kgs / 70 kgs" },
             { label: "size", value: "550 mm (W) x 580 mm (L) x 1200 mm (H)" },
             { label: "air", value: "over 1.0 HP" },
@@ -98,9 +98,9 @@ export const machines: Machine[] = [
             "/nt-906-nf_2.jpg"
         ],
         description: {
-            en: "High-capacity four-color pearl machine. Features a 230mm head size and the ability to work with four colors simultaneously without mechanical changes.",
-            ar: "آلة لؤلؤ رباعية الألوان عالية السعة. تتميز بحجم رأس 230 مم والقدرة على العمل بأربعة ألوان في وقت واحد دون تغييرات ميكانيكية.",
-            tr: "Yüksek kapasiteli dört renkli inci makinesi. 230 mm kafa boyutuna ve mekanik değişiklik yapmadan aynı anda dört renkle çalışma özelliğine sahiptir."
+            en: "The UGR-906-NF is an automatic four-color pearl attaching machine for production lines that use multiple pearl colors on the same garment style. It has a 230 mm head size, supports 4 to 16 mm pearl sizes and lets operators work with four colors in the same size without mechanical changes. The upper attaching system keeps the work area visible, while laser marking supports accurate placement on textile panels and finished garments.",
+            ar: "UGR-906-NF آلة أوتوماتيكية لتركيب اللؤلؤ بأربعة ألوان لخطوط الإنتاج التي تستخدم ألوانا متعددة من اللؤلؤ على نفس تصميم الملابس. تتميز برأس 230 مم، وتدعم مقاسات اللؤلؤ من 4 إلى 16 مم، وتتيح العمل بأربعة ألوان من نفس المقاس دون تعديلات ميكانيكية. يحافظ نظام التركيب العلوي على وضوح منطقة العمل، ويساعد التحديد بالليزر على دقة التثبيت على الملابس وقطع النسيج.",
+            tr: "UGR-906-NF, aynı giysi modelinde birden fazla inci rengi kullanan üretim hatları için otomatik dört renkli inci çakma makinesidir. 230 mm kafa ölçüsüne sahiptir, 4 ile 16 mm inci ölçülerini destekler ve mekanik değişiklik yapmadan aynı ölçüde dört renkle çalışmayı sağlar. Üstten çakma sistemi çalışma alanını görünür tutar, lazer işaretleme ise tekstil panelleri ve bitmiş giysilerde hassas yerleşimi destekler."
         },
         features: {
             en: [
@@ -143,7 +143,7 @@ export const machines: Machine[] = [
             { label: "headSize", value: "230mm" },
             { label: "speed", value: "190 pcs. / minute" },
             { label: "pearlSize", value: "4~16 mm (pearl size is optional)" },
-            { label: "colors", value: "refer to the last page on the catalogue" },
+            { label: "colors", value: "Contact for current color options" },
             { label: "weight", value: "65 kgs / 70 kgs" },
             { label: "size", value: "550 mm (W) x 580 mm (L) x 1200 mm (H)" },
             { label: "air", value: "over 1.0 HP" },
@@ -161,9 +161,9 @@ export const machines: Machine[] = [
             "/nt-906-nd-w_2.jpg"
         ],
         description: {
-            en: "Versatile machine for both standard and half pearls. Engineered for high precision and efficiency with various pearl types.",
-            ar: "آلة متعددة الاستخدامات لكل من اللؤلؤ القياسي ونصف اللؤلؤ. مصممة لدقة وكفاءة عالية مع أنواع مختلفة من اللؤلؤ.",
-            tr: "Hem standart hem de yarım inciler için çok yönlü makine. Çeşitli inci türleri ile yüksek hassasiyet ve verimlilik için tasarlanmıştır."
+            en: "The UGR-906-ND-W is built for factories that need one machine for standard pearl and half pearl work. It supports 4 to 16 mm pearl sizes, runs at 190 pieces per minute for pearl work and 160 pieces per minute for half pearl work. Upper attaching gives the operator a clear view of the placement point, while laser marking helps keep repeated patterns aligned on garments, accessories and textile panels.",
+            ar: "UGR-906-ND-W مصممة للمصانع التي تحتاج إلى ماكينة واحدة لأعمال اللؤلؤ القياسي ونصف اللؤلؤ. تدعم مقاسات اللؤلؤ من 4 إلى 16 مم، وتعمل بسرعة 190 قطعة في الدقيقة للؤلؤ و160 قطعة في الدقيقة لنصف اللؤلؤ. يمنح التركيب من الأعلى رؤية واضحة لنقطة التثبيت، ويساعد التحديد بالليزر على الحفاظ على انتظام الأنماط المتكررة على الملابس والإكسسوارات وقطع النسيج.",
+            tr: "UGR-906-ND-W, standart inci ve yarım inci işleri için tek makineye ihtiyaç duyan fabrikalar için geliştirilmiştir. 4 ile 16 mm inci ölçülerini destekler, inci işlerinde dakikada 190 adet ve yarım inci işlerinde dakikada 160 adet çalışma hızı sunar. Üstten çakma operatöre yerleşim noktasında net görüş sağlar, lazer işaretleme ise giysi, aksesuar ve tekstil panellerinde tekrarlı desenleri hizalı tutmaya yardımcı olur."
         },
         features: {
             en: [
@@ -199,8 +199,8 @@ export const machines: Machine[] = [
         specs: [
             { label: "speed", value: "190 pcs./min (pearl) 160 pcs./min (half pearl)" },
             { label: "pearlSize", value: "4~16 mm (pearl size is optional)" },
-            { label: "halfPearlSize", value: "refer to the last page on the catalogue" },
-            { label: "colors", value: "refer to the last page on the catalogue" },
+            { label: "halfPearlSize", value: "Contact for current half pearl options" },
+            { label: "colors", value: "Contact for current color options" },
             { label: "weight", value: "65 kgs / 70 kgs" },
             { label: "size", value: "550 mm (W) x 580 mm (L) x 1200 mm (H)" },
             { label: "air", value: "over 1.0 HP" },
@@ -218,9 +218,9 @@ export const machines: Machine[] = [
             "/NT906-NF-D9-2.jpg"
         ],
         description: {
-            en: "Fully computerized high-speed design machine. Supports up to four types of pearls simultaneously with advanced design software compatibility.",
-            ar: "آلة تصميم عالية السرعة محوسبة بالكامل. تدعم ما يصل إلى أربعة أنواع من اللؤلؤ في وقت واحد مع توافق متقدم مع برامج التصميم.",
-            tr: "Tam bilgisayarlı yüksek hızlı tasarım makinesi. Gelişmiş tasarım yazılımı uyumluluğu ile aynı anda dört tipe kadar inciyi destekler."
+            en: "The UGR-NF-D9 is a computerized pearl design machine for pattern-based pearl placement on garments and textile products. It supports up to four pearl types without mechanical modification, works with dst and rst design files and includes design-making software with a basic tool set. The 420 mm by 330 mm work area suits decorative layouts where repeat accuracy, file control and operator visibility matter.",
+            ar: "UGR-NF-D9 آلة محوسبة لتصميم وتركيب اللؤلؤ على الملابس ومنتجات النسيج حسب النمط. تدعم حتى أربعة أنواع من اللؤلؤ دون تعديل ميكانيكي، وتعمل مع ملفات dst و rst، وتشمل برنامج تصميم ومجموعة أدوات أساسية. مساحة العمل 420 مم × 330 مم مناسبة للتصاميم الزخرفية التي تحتاج إلى دقة التكرار والتحكم بالملفات ووضوح الرؤية للمشغل.",
+            tr: "UGR-NF-D9, giysi ve tekstil ürünlerinde desene bağlı inci yerleşimi için bilgisayarlı inci desen makinesidir. Mekanik değişiklik olmadan dört inci tipine kadar çalışır, dst ve rst desen dosyalarıyla uyumludur ve desen hazırlama programı ile temel takım seti içerir. 420 mm x 330 mm çalışma alanı; tekrarlama hassasiyeti, dosya kontrolü ve operatör görüşünün önemli olduğu dekoratif işler için uygundur."
         },
         features: {
             en: [

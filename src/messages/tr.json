@@ -58,6 +58,7 @@
         "weekdays": "Pazartesi - Cuma: 09:00 – 19:00",
         "saturday": "Cumartesi: 09:00 – 17:00",
         "sunday": "Pazar: Kapalı",
+        "privacy": "Gizlilik Politikası",
         "rights": "Tüm Hakları Saklıdır."
     },
     "Products": {
@@ -74,11 +75,22 @@
         "eyebrow": "Pearl Machine Hakkında",
         "title": "Tekstil üretimi için otomatik inci çakma makineleri",
         "intro": "Pearl Machine, hazır giyim ve tekstil işlerinde inci, yarım inci ve trok uygulaması için kullanılan makinelere odaklanır. Katalog, teklif istemeden önce makine kabiliyetini karşılaştırmak isteyen alıcılar için hazırlanmıştır.",
+        "introSecond": "Sitede genel satış iddiaları yerine çalışma hızı, çalışılabilir inci ölçüsü, güç kaynağı, hava kompresörü ihtiyacı, makine ölçüleri, makine ağırlığı ve uygun kullanım alanları listelenir. Bu yapı hazır giyim fabrikalarının, tekstil atölyelerinin ve aksesuar üreticilerinin satışla iletişime geçmeden önce doğru modeli elemesine yardımcı olur.",
         "points": {
             "catalog": "Ürün aralığında iki renkli inci makineleri, dört renkli inci makineleri, yarım inci modelleri ve bilgisayarlı desen makineleri bulunur.",
             "specs": "Listelenen her makinede hız, inci ölçüsü, makine boyutu, ağırlık, hava kompresörü ihtiyacı ve güç tüketimi gibi pratik bilgiler yer alır.",
             "contact": "Satış talepleri İstanbul iletişim adresinden İngilizce, Türkçe ve Arapça olarak yanıtlanır."
         },
+        "buyersTitle": "Alıcılar bu siteyi nasıl kullanır",
+        "buyers": {
+            "production": "Üretim ekipleri teklif istemeden önce makineleri inci tipi, renk kapasitesi, hız ve çalışma alanına göre karşılaştırabilir.",
+            "selection": "Alıcılar kumaş tipi, inci ölçüsü, beklenen adet ve teslimat ülkesini göndererek doğru makine kurulumu için öneri alabilir.",
+            "specs": "Teknik ekipler yerleşim planı yapmadan önce güç, hava kompresörü ve makine ölçüsü ihtiyaçlarını kontrol edebilir.",
+            "languages": "Site, uluslararası tekstil alıcıları için İngilizce, Türkçe ve Arapça destekler."
+        },
+        "verificationTitle": "Doğrulanması gereken bilgiler",
+        "verificationBody": "Sertifikalar, patent numaraları, fabrika fotoğrafları, demo videoları ve müşteri referansları yalnızca firma tarafından doğrulandıktan sonra yayınlanmalıdır. Bu bilgiler B2B güven için önemlidir, ancak SEO için uydurulmamalıdır.",
+        "verificationNote": "CE, ISO, garanti, kurulum veya servis dokümanı gerekiyorsa satın almayı düşündüğünüz model için Pearl Machine ile doğrudan iletişime geçin.",
         "contactTitle": "Firma iletişimi"
     },
     "ProductDetails": {
@@ -124,9 +136,36 @@
             "productInterest": "İlgilenilen Makine",
             "quantity": "Beklenen Adet",
             "message": "Mesajınız",
-            "submit": "Mesaj Gönder",
+            "submit": "Teklif İste",
             "success": "Mesajınız başarıyla gönderildi!",
             "productInquiry": "Ürün hakkında bilgi: {product}"
+        }
+    },
+    "Privacy": {
+        "title": "Gizlilik Politikası",
+        "intro": "Pearl Machine, iletişim bilgilerini ürün sorularına, teklif taleplerine ve satış iletişimine yanıt vermek için kullanır.",
+        "data": {
+            "title": "Topladığımız bilgiler",
+            "body": "Pearl Machine ile iletişime geçtiğinizde adınız, şirketiniz, ülkeniz, e-posta adresiniz, telefon numaranız, ilgilendiğiniz makine, beklenen adet ve mesaj detaylarınız bize ulaşabilir."
+        },
+        "use": {
+            "title": "Bilgileri nasıl kullanırız",
+            "body": "Bu bilgileri talebinizi yanıtlamak, makine modeli önermek, teklif hazırlamak ve talebinizle ilgili iş iletişimini sürdürmek için kullanırız."
+        },
+        "sharing": {
+            "title": "Paylaşım",
+            "body": "İletişim bilgilerini satmayız. Bilgiler yalnızca bir iş talebini yanıtlamak veya teslimat sürecini düzenlemek için gerekli olduğunda hizmet ya da lojistik ortaklarıyla paylaşılabilir."
+        },
+        "retention": {
+            "title": "Saklama",
+            "body": "Talep kayıtları satış, destek, yasal veya muhasebe amaçları için gerekli olduğu sürece saklanır."
+        },
+        "rights": {
+            "title": "Haklarınız",
+            "body": "İletişim bilgileriniz için erişim, düzeltme veya silme talebini Pearl Machine'e e-posta göndererek iletebilirsiniz."
+        },
+        "contact": {
+            "title": "İletişim"
         }
     }
 }

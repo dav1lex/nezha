@@ -63,6 +63,7 @@ export function Footer() {
                                 { name: tNav('about'), href: "/about" },
                                 { name: tNav('products'), href: "/products" },
                                 { name: tNav('contact'), href: "/contact" },
+                                { name: t('privacy'), href: "/privacy" },
                             ].map((link, i) => (
                                 <li key={i}>
                                     <Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 group">

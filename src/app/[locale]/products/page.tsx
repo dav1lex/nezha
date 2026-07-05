@@ -81,26 +81,34 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
             </div>
 
             <div className="mb-16 overflow-hidden rounded-lg border bg-card">
-                <Table>
+                <Table className="min-w-[1180px] table-fixed">
+                    <colgroup>
+                        <col className="w-[140px]" />
+                        <col className="w-[310px]" />
+                        <col className="w-[220px]" />
+                        <col className="w-[210px]" />
+                        <col className="w-[210px]" />
+                        <col className="w-[90px]" />
+                    </colgroup>
                     <TableHeader>
                         <TableRow>
-                            <TableHead>{t('table.model')}</TableHead>
-                            <TableHead>{t('table.bestFor')}</TableHead>
-                            <TableHead>{tDetails('speed')}</TableHead>
-                            <TableHead>{tDetails('pearlSize')}</TableHead>
-                            <TableHead>{tDetails('colors')}</TableHead>
-                            <TableHead className="text-right">{t('table.action')}</TableHead>
+                            <TableHead className="px-4">{t('table.model')}</TableHead>
+                            <TableHead className="px-4 whitespace-normal">{t('table.bestFor')}</TableHead>
+                            <TableHead className="px-4 whitespace-normal">{tDetails('speed')}</TableHead>
+                            <TableHead className="px-4 whitespace-normal">{tDetails('pearlSize')}</TableHead>
+                            <TableHead className="px-4 whitespace-normal">{tDetails('colors')}</TableHead>
+                            <TableHead className="px-4 text-right">{t('table.action')}</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {machines.map((machine) => (
                             <TableRow key={machine.id}>
-                                <TableCell className="font-bold">{machine.name}</TableCell>
-                                <TableCell className="max-w-[280px] text-muted-foreground">{machine.bestFor[currentLocale]}</TableCell>
-                                <TableCell>{specValue(machine, 'speed')}</TableCell>
-                                <TableCell>{specValue(machine, 'pearlSize')}</TableCell>
-                                <TableCell>{specValue(machine, 'colors')}</TableCell>
-                                <TableCell className="text-right">
+                                <TableCell className="px-4 align-top font-bold">{machine.name}</TableCell>
+                                <TableCell className="px-4 align-top whitespace-normal break-words leading-6 text-muted-foreground">{machine.bestFor[currentLocale]}</TableCell>
+                                <TableCell className="px-4 align-top whitespace-normal break-words leading-6">{specValue(machine, 'speed')}</TableCell>
+                                <TableCell className="px-4 align-top whitespace-normal break-words leading-6">{specValue(machine, 'pearlSize')}</TableCell>
+                                <TableCell className="px-4 align-top whitespace-normal break-words leading-6">{specValue(machine, 'colors')}</TableCell>
+                                <TableCell className="px-4 align-top text-right">
                                     <Button asChild size="sm" variant="outline">
                                         <Link href={`/products/${machine.slug}`}>{t('viewDetails')}</Link>
                                     </Button>

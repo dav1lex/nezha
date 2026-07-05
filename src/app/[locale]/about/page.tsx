@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Factory, FileCheck2, Languages, Wrench } from 'lucide-react';
 import { absoluteUrl, baseUrl, company, languageAlternates } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -45,7 +45,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             <div className="mx-auto max-w-4xl">
                 <p className="mb-3 text-sm font-bold uppercase tracking-wider text-muted-foreground">{t('eyebrow')}</p>
                 <h1 className="mb-6 text-4xl font-black tracking-tight md:text-5xl">{t('title')}</h1>
-                <p className="mb-10 text-lg leading-8 text-muted-foreground">{t('intro')}</p>
+                <p className="mb-6 text-lg leading-8 text-muted-foreground">{t('intro')}</p>
+                <p className="mb-10 text-lg leading-8 text-muted-foreground">{t('introSecond')}</p>
 
                 <div className="grid gap-5 md:grid-cols-3">
                     {[t('points.catalog'), t('points.specs'), t('points.contact')].map((point) => (
@@ -54,6 +55,31 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                             <p className="leading-7 text-muted-foreground">{point}</p>
                         </div>
                     ))}
+                </div>
+
+                <div className="mt-12 grid gap-8 md:grid-cols-2">
+                    <section>
+                        <h2 className="mb-4 text-2xl font-bold">{t('buyersTitle')}</h2>
+                        <div className="space-y-4">
+                            {[
+                                { icon: Factory, text: t('buyers.production') },
+                                { icon: Wrench, text: t('buyers.selection') },
+                                { icon: FileCheck2, text: t('buyers.specs') },
+                                { icon: Languages, text: t('buyers.languages') },
+                            ].map((item) => (
+                                <div key={item.text} className="flex gap-3 rounded-lg border bg-card p-4">
+                                    <item.icon className="mt-1 h-5 w-5 shrink-0 text-primary" />
+                                    <p className="leading-7 text-muted-foreground">{item.text}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 className="mb-4 text-2xl font-bold">{t('verificationTitle')}</h2>
+                        <p className="leading-8 text-muted-foreground">{t('verificationBody')}</p>
+                        <p className="mt-4 leading-8 text-muted-foreground">{t('verificationNote')}</p>
+                    </section>
                 </div>
 
                 <div className="mt-12 rounded-lg border bg-secondary/30 p-6">

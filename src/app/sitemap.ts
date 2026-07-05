@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/about',
         '/products',
         '/contact',
+        '/privacy',
     ];
 
     const sitemap: MetadataRoute.Sitemap = [];

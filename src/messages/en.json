@@ -58,6 +58,7 @@
         "weekdays": "Monday - Friday: 9 am – 7 pm",
         "saturday": "Saturday: 9 am – 5 pm",
         "sunday": "Sunday: Closed",
+        "privacy": "Privacy Policy",
         "rights": "All Rights Reserved."
     },
     "Products": {
@@ -74,11 +75,22 @@
         "eyebrow": "About Pearl Machine",
         "title": "Automatic pearl attaching machines for textile production",
         "intro": "Pearl Machine focuses on machinery for pearl, half pearl and stud application in garment and textile work. The catalog is built for buyers who need to compare machine capability before requesting a quote.",
+        "introSecond": "The site lists practical machine data instead of broad sales claims: working speed, workable pearl size, power source, air compressor requirement, machine dimensions, machine weight and suitable use cases. That helps garment factories, textile workshops and accessory producers shortlist the right model before contacting sales.",
         "points": {
             "catalog": "The product range includes two-color pearl machines, four-color pearl machines, half pearl models and computerized pattern machines.",
             "specs": "Each listed machine includes practical specs such as speed, pearl size, machine size, weight, air compressor need and power consumption.",
             "contact": "Sales inquiries are handled through the Istanbul contact address in English, Turkish and Arabic."
         },
+        "buyersTitle": "How buyers use this site",
+        "buyers": {
+            "production": "Production teams can compare machines by pearl type, color capacity, speed and work area before asking for a quote.",
+            "selection": "Buyers can send fabric type, pearl size, expected quantity and delivery country so sales can recommend the correct machine setup.",
+            "specs": "Technical teams can check power, air compressor and machine size requirements before planning floor space.",
+            "languages": "The site supports English, Turkish and Arabic for international textile buyers."
+        },
+        "verificationTitle": "Information still being verified",
+        "verificationBody": "Certifications, patent numbers, factory photos, demo videos and customer references should only be published after they are confirmed by the company. Those details matter for B2B trust, but they should not be invented for SEO.",
+        "verificationNote": "If you need CE, ISO, warranty, installation or service documentation, contact Pearl Machine directly and request the current documents for the model you plan to buy.",
         "contactTitle": "Company contact"
     },
     "ProductDetails": {
@@ -124,9 +136,36 @@
             "productInterest": "Machine Interest",
             "quantity": "Expected Quantity",
             "message": "Message",
-            "submit": "Send Message",
+            "submit": "Request Quote",
             "success": "Message sent successfully!",
             "productInquiry": "Inquiry about: {product}"
+        }
+    },
+    "Privacy": {
+        "title": "Privacy Policy",
+        "intro": "Pearl Machine uses contact information to respond to product questions, quote requests and sales communication.",
+        "data": {
+            "title": "Information we collect",
+            "body": "When you contact Pearl Machine, we may receive your name, company, country, email address, phone number, machine interest, expected quantity and message details."
+        },
+        "use": {
+            "title": "How we use information",
+            "body": "We use this information to answer your inquiry, recommend a machine model, prepare a quote and continue business communication related to your request."
+        },
+        "sharing": {
+            "title": "Sharing",
+            "body": "We do not sell contact information. Information may be shared with service or logistics partners only when needed to answer a business request or arrange delivery."
+        },
+        "retention": {
+            "title": "Retention",
+            "body": "Inquiry records are kept only as long as needed for sales, support, legal or accounting purposes."
+        },
+        "rights": {
+            "title": "Your rights",
+            "body": "You can request access, correction or deletion of your contact information by emailing Pearl Machine."
+        },
+        "contact": {
+            "title": "Contact"
         }
     }
 }

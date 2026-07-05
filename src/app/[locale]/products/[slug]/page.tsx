@@ -80,6 +80,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'Product',
+        '@id': absoluteUrl(`/${locale}/products/${slug}#product`),
         name: seoName,
         sku: machine.id.toUpperCase(),
         mpn: machine.name,
@@ -87,10 +88,15 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
         description: machine.description[currentLocale],
         brand: {
             '@type': 'Brand',
+            '@id': 'https://pearlmachine.com/#brand',
             name: 'Pearl Machine',
+        },
+        manufacturer: {
+            '@id': 'https://pearlmachine.com/#organization',
         },
         offers: {
             '@type': 'Offer',
+            '@id': absoluteUrl(`/${locale}/products/${slug}#offer`),
             url: `https://pearlmachine.com/${locale}/products/${slug}`,
             availability: 'https://schema.org/InStock',
             priceCurrency: 'USD',
@@ -105,6 +111,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     const breadcrumbSchema = {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
+        '@id': absoluteUrl(`/${locale}/products/${slug}#breadcrumb`),
         itemListElement: [
             {
                 '@type': 'ListItem',

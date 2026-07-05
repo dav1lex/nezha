@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 import type { Machine } from "@/lib/data"
 import { useLocale } from "next-intl"
+import { productImageAlt, productSeoName } from "@/lib/seo"
 
 interface ProductCardProps {
     machine: Machine
@@ -19,6 +20,7 @@ export function ProductCard({ machine }: ProductCardProps) {
     const t = useTranslations('Products')
     const locale = useLocale() as 'en' | 'ar' | 'tr'
     const [isLoading, setIsLoading] = React.useState(true)
+    const seoName = productSeoName(machine)
 
     return (
         <Card className="overflow-hidden group hover:shadow-lg transition-all duration-300">
@@ -32,7 +34,7 @@ export function ProductCard({ machine }: ProductCardProps) {
                     <Link href={`/products/${machine.slug}`}>
                         <Image
                             src={machine.images[0]}
-                            alt={machine.name}
+                            alt={productImageAlt(machine)}
                             fill
                             className={`object-contain transition-all duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'
                                 }`}
@@ -44,7 +46,7 @@ export function ProductCard({ machine }: ProductCardProps) {
             </CardHeader>
             <CardContent className="p-4">
                 <div className="flex justify-between items-start mb-2">
-                    <CardTitle className="text-xl font-bold">{machine.name}</CardTitle>
+                    <CardTitle className="text-xl font-bold">{seoName}</CardTitle>
                     <Badge variant="secondary" className="capitalize">{machine.category}</Badge>
                 </div>
                 <p className="text-sm text-muted-foreground line-clamp-2">

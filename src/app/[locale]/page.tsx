@@ -1,9 +1,50 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/routing';
-import { ArrowRight, Award, Globe2, Zap, Target } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Gauge, Globe2, Ruler, Settings2 } from 'lucide-react';
 import { ProductCard } from '@/components/product-card';
 import { machines } from '@/lib/data';
+import Image from 'next/image';
+import type { Metadata } from 'next';
+import { absoluteUrl, baseUrl, languageAlternates, productImageAlt } from '@/lib/seo';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+
+    const title = locale === 'tr'
+        ? 'Otomatik İnci ve Trok Çakma Makineleri'
+        : locale === 'ar'
+            ? 'آلات تركيب اللؤلؤ والدبابيس الأوتوماتيكية'
+            : 'Automatic Pearl & Stud Attaching Machines';
+
+    const description = locale === 'tr'
+        ? "Tekstil üretimi için otomatik inci, yarım inci ve trok çakma makinelerini karşılaştırın. Pearl Machine'den İstanbul çıkışlı teklif alın."
+        : locale === 'ar'
+            ? 'قارن آلات تركيب اللؤلؤ ونصف اللؤلؤ والدبابيس الأوتوماتيكية لإنتاج الملابس والمنسوجات واطلب عرض سعر.'
+            : 'Compare automatic pearl, half pearl and stud attaching machines for garment and textile production. Request a quote from Pearl Machine in Istanbul.';
+
+    return {
+        metadataBase: new URL(baseUrl),
+        title,
+        description,
+        alternates: {
+            canonical: `/${locale}`,
+            languages: languageAlternates('/'),
+        },
+        openGraph: {
+            title: `${title} | Pearl Machine`,
+            description,
+            url: absoluteUrl(`/${locale}`),
+            images: [{ url: absoluteUrl('/nt-906-nw_1.jpg'), width: 1200, height: 630, alt: productImageAlt(machines[0]) }],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: `${title} | Pearl Machine`,
+            description,
+            images: [absoluteUrl('/nt-906-nw_1.jpg')],
+        },
+    };
+}
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
@@ -12,87 +53,114 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     const t = await getTranslations('Index');
     const tNav = await getTranslations('Navbar');
     const tProd = await getTranslations('Products');
+    const featuredMachine = machines[0];
 
     return (
-        <div className="flex flex-col gap-24 pb-20">
-            {/* HERO SECTION */}
-            <section className="relative min-h-[calc(100vh-4rem)] flex flex-col justify-center overflow-hidden">
-                {/* Background Decorative Gradient */}
-                <div className="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3 animate-pulse" />
-                <div className="absolute bottom-0 left-0 -z-10 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -translate-x-1/4 translate-y-1/4" />
-
-                <div className="container mx-auto px-4 md:px-8 flex flex-col items-center text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                        <Award className="h-3.5 w-3.5" />
+        <div className="flex flex-col gap-20 pb-20">
+            <section className="border-b bg-secondary/20">
+                <div className="container mx-auto grid min-h-[calc(100vh-4rem)] grid-cols-1 items-center gap-10 px-4 py-14 md:grid-cols-[1.05fr_0.95fr] md:px-8">
+                    <div className="max-w-3xl">
+                        <div className="mb-6 inline-flex items-center gap-2 rounded-full border bg-background px-3 py-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                            <Settings2 className="h-3.5 w-3.5" />
                         {t('heroBadge')}
+                        </div>
+
+                        <h1 className="mb-6 text-4xl font-black tracking-tight text-balance md:text-6xl">
+                            {t('heroTitle')}
+                        </h1>
+
+                        <p className="mb-8 max-w-2xl text-lg leading-8 text-muted-foreground md:text-xl">
+                            {t('heroSubtitle')}
+                        </p>
+
+                        <div className="mb-10 flex flex-col gap-3 sm:flex-row">
+                            <Button size="lg" asChild className="h-12 px-6">
+                                <Link href="/products" className="flex items-center gap-2">
+                                    {t('browseMachines')}
+                                    <ArrowRight className="h-5 w-5 rtl:rotate-180" />
+                                </Link>
+                            </Button>
+                            <Button size="lg" variant="outline" asChild className="h-12 px-6">
+                                <Link href="/contact">
+                                    {tNav('contact')}
+                                </Link>
+                            </Button>
+                        </div>
+
+                        <dl className="grid grid-cols-2 gap-4 text-sm md:grid-cols-4">
+                            <div>
+                                <dt className="font-bold">{t('stats.speedValue')}</dt>
+                                <dd className="text-muted-foreground">{t('stats.speedLabel')}</dd>
+                            </div>
+                            <div>
+                                <dt className="font-bold">{t('stats.sizeValue')}</dt>
+                                <dd className="text-muted-foreground">{t('stats.sizeLabel')}</dd>
+                            </div>
+                            <div>
+                                <dt className="font-bold">{t('stats.colorsValue')}</dt>
+                                <dd className="text-muted-foreground">{t('stats.colorsLabel')}</dd>
+                            </div>
+                            <div>
+                                <dt className="font-bold">{t('stats.locationValue')}</dt>
+                                <dd className="text-muted-foreground">{t('stats.locationLabel')}</dd>
+                            </div>
+                        </dl>
                     </div>
 
-                    <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-8 max-w-5xl text-balance leading-[0.95]">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/50">
-                            {t('heroTitle')}
-                        </span>
-                    </h1>
-
-                    <p className="text-xl md:text-2xl text-muted-foreground max-w-[800px] mb-12 leading-relaxed font-medium">
-                        {t('heroSubtitle')}
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row gap-5 items-center">
-                        <Button size="lg" asChild className="text-lg px-10 h-16 rounded-2xl shadow-2xl shadow-primary/20 hover:scale-105 transition-all">
-                            <Link href="/products" className="flex items-center gap-2">
-                                {t('browseMachines')}
-                                <ArrowRight className="h-6 w-6 rtl:rotate-180" />
-                            </Link>
-                        </Button>
-                        <Button size="lg" variant="outline" asChild className="text-lg px-10 h-16 rounded-2xl border-2 hover:bg-secondary/50">
-                            <Link href="/contact">
-                                {tNav('contact')}
-                            </Link>
-                        </Button>
+                    <div className="relative mx-auto w-full max-w-xl">
+                        <div className="relative aspect-square overflow-hidden rounded-lg border bg-white">
+                            <Image
+                                src={featuredMachine.images[0]}
+                                alt={productImageAlt(featuredMachine)}
+                                fill
+                                priority
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                className="object-contain p-4"
+                            />
+                        </div>
+                        <p className="mt-3 text-sm text-muted-foreground">
+                            {t('heroImageCaption')}
+                        </p>
                     </div>
                 </div>
             </section>
 
-            {/* CORE FEATURES SECTION */}
             <section className="container mx-auto px-4 md:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="mb-10 max-w-3xl">
+                    <h2 className="mb-4 text-3xl font-extrabold tracking-tight">{t('applicationTitle')}</h2>
+                    <p className="text-lg leading-8 text-muted-foreground">{t('applicationDescription')}</p>
+                </div>
+                <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
                     {[
                         {
-                            icon: Zap,
+                            icon: Gauge,
                             title: t('quality'),
-                            desc: t('qualityDesc'),
-                            color: "text-amber-500",
-                            bgColor: "bg-amber-500/10"
+                            desc: t('qualityDesc')
+                        },
+                        {
+                            icon: Ruler,
+                            title: t('experience'),
+                            desc: t('experienceDesc')
                         },
                         {
                             icon: Globe2,
                             title: t('support'),
-                            desc: t('supportDesc'),
-                            color: "text-blue-500",
-                            bgColor: "bg-blue-500/10"
-                        },
-                        {
-                            icon: Target,
-                            title: t('experience'),
-                            desc: t('experienceDesc'),
-                            color: "text-emerald-500",
-                            bgColor: "bg-emerald-500/10"
+                            desc: t('supportDesc')
                         },
                     ].map((feature, i) => (
-                        <div key={i} className="group flex flex-col items-start p-10 rounded-[2.5rem] bg-card border border-border/50 hover:border-primary/20 transition-all hover:shadow-2xl hover:shadow-primary/5">
-                            <div className={`p-4 rounded-2xl ${feature.bgColor} ${feature.color} mb-8 group-hover:scale-110 transition-transform`}>
-                                <feature.icon className="h-8 w-8" />
+                        <div key={i} className="flex flex-col items-start rounded-lg border bg-card p-6">
+                            <div className="mb-5 rounded-lg bg-primary/10 p-3 text-primary">
+                                <feature.icon className="h-6 w-6" />
                             </div>
-                            <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
-                            <p className="text-muted-foreground text-lg leading-relaxed">{feature.desc}</p>
+                            <h3 className="mb-3 text-xl font-bold">{feature.title}</h3>
+                            <p className="leading-7 text-muted-foreground">{feature.desc}</p>
                         </div>
                     ))}
                 </div>
             </section>
 
-            {/* FEATURED PRODUCTS */}
             <section className="container mx-auto px-4 md:px-8 space-y-12">
-                <div className="flex flex-col md:flex-row justify-between items-end gap-6 text-left">
+                <div className="flex flex-col gap-6 text-left md:flex-row md:items-end md:justify-between">
                     <div className="space-y-4">
                         <h2 className="text-4xl font-extrabold tracking-tight">{tProd('title')}</h2>
                         <p className="text-xl text-muted-foreground max-w-2xl">{tProd('description')}</p>
@@ -111,15 +179,24 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </div>
             </section>
 
-            {/* INDUSTRIAL TRUST SECTION */}
-            <section className="bg-secondary/20 py-24">
-                <div className="container mx-auto px-4 md:px-8 text-center">
-                    <h2 className="text-3xl font-bold mb-12 uppercase tracking-[0.2em] text-muted-foreground/60">{t('whyChooseUs')}</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
-                        <div className="flex items-center justify-center font-black text-2xl tracking-tighter italic">TRUSTED</div>
-                        <div className="flex items-center justify-center font-black text-2xl tracking-tighter italic">RELIABLE</div>
-                        <div className="flex items-center justify-center font-black text-2xl tracking-tighter italic">PRECISE</div>
-                        <div className="flex items-center justify-center font-black text-2xl tracking-tighter italic">GLOBAL</div>
+            <section className="bg-secondary/30 py-16">
+                <div className="container mx-auto grid gap-10 px-4 md:grid-cols-[0.8fr_1.2fr] md:px-8">
+                    <div>
+                        <h2 className="mb-4 text-3xl font-extrabold tracking-tight">{t('quoteTitle')}</h2>
+                        <p className="leading-8 text-muted-foreground">{t('quoteDescription')}</p>
+                    </div>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                        {[
+                            t('quoteItems.machine'),
+                            t('quoteItems.pearlSize'),
+                            t('quoteItems.fabric'),
+                            t('quoteItems.production'),
+                        ].map((item) => (
+                            <div key={item} className="flex items-start gap-3 rounded-lg border bg-background p-4">
+                                <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-primary" />
+                                <span className="font-medium leading-7">{item}</span>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>

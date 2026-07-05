@@ -12,23 +12,43 @@
         "system": "Sistem"
     },
     "Index": {
-        "title": "Pearl Machine - Endüstriyel Mükemmellik",
-        "description": "Pearl Machine'nin birinci sınıf otomatik inci ve trok çakma teknolojisi ile üretim hızınızı en üst düzeye çıkarın. Küresel tekstil endüstrisi için hassas mühendislik.",
-        "heroTitle": "İnci Çakma Teknolojisinde Standart",
-        "heroSubtitle": "Küresel tekstil endüstrisi için hassas mühendislik. Eşsiz hız ve güvenilirliği deneyimleyin.",
-        "heroBadge": "Lider Endüstriyel Sağlayıcı",
-        "browseMachines": "Kataloğu İncele",
+        "title": "Otomatik İnci ve Trok Çakma Makineleri",
+        "description": "Tekstil üretimi için otomatik inci, yarım inci ve trok çakma makinelerini karşılaştırın. Pearl Machine'den İstanbul çıkışlı teklif alın.",
+        "heroTitle": "Tekstil Üretimi İçin Otomatik İnci ve Trok Çakma Makineleri",
+        "heroSubtitle": "Pearl Machine, hazır giyim fabrikaları, tekstil atölyeleri ve aksesuar üretim hatları için otomatik inci, yarım inci ve trok çakma makineleri sunar. Modelleri karşılaştırın, teknik özellikleri inceleyin ve satın almadan önce doğru kurulum için teklif isteyin.",
+        "heroBadge": "İstanbul'dan tekstil makineleri",
+        "heroImageCaption": "UGR-906-NW çift renkli inci çakma makinesi.",
+        "browseMachines": "Makineleri Karşılaştır",
         "viewCatalog": "Tüm Kataloğu Görüntüle",
-        "whyChooseUs": "Lider Markalar Neden Bizi Seçiyor?",
-        "experience": "Modern İnovasyon",
-        "experienceDesc": "Gelecek nesil tekstil üretimi için tasarlanmış son teknoloji çözümler.",
-        "quality": "Patentli Hassasiyet",
-        "qualityDesc": "Dakikada 275 adete kadar kapasiteli patentli yüksek hızlı teknoloji.",
-        "support": "Global Destek",
-        "supportDesc": "Global yerinde bakım ile 7/24 endüstriyel kullanım için tasarlandı."
+        "applicationTitle": "Giyside inci, yarım inci ve trok işleri için",
+        "applicationDescription": "Katalogda üstten beslemeli inci çakma makineleri, dört renkli inci makineleri ve bilgisayarlı desen işleri için modeller bulunur. Her model sayfasında hız, inci ölçüsü, güç, hava kompresörü ihtiyacı, makine ağırlığı ve çalışma alanı listelenir.",
+        "experience": "Temiz yerleşim",
+        "experienceDesc": "Lazer işaretleme ve üstten çakma, operatörün giysinin ters tarafını işaretlemeden inciyi hedef noktaya yerleştirmesine yardımcı olur.",
+        "quality": "Üretim hızı",
+        "qualityDesc": "Standart inci modellerinde dakikada 190 adet çalışma hızı listelenir. Bilgisayarlı UGR-NF-D9 modeli 100 ile 280 rpm aralığını destekler.",
+        "support": "Satış iletişimi",
+        "supportDesc": "İnci ölçünüzü, kumaş tipinizi, üretim adedinizi ve düşündüğünüz modeli gönderin. Pearl Machine İstanbul iletişim adresinden yanıt verir.",
+        "stats": {
+            "speedValue": "190 adet/dk",
+            "speedLabel": "standart inci modelleri",
+            "sizeValue": "4 ile 16 mm",
+            "sizeLabel": "çalışılabilir inci ölçüsü",
+            "colorsValue": "2 veya 4 renk",
+            "colorsLabel": "seçili modeller",
+            "locationValue": "İstanbul",
+            "locationLabel": "satış iletişimi"
+        },
+        "quoteTitle": "Teklif istemeden önce gönderilecek bilgiler",
+        "quoteDescription": "Doğru makine önerisi giysi, inci tipi ve günlük üretim hedefiyle ilgilidir. Bu bilgileri gönderirseniz satış ekibi doğru modeli daha hızlı önerebilir.",
+        "quoteItems": {
+            "machine": "Hedef model veya üretim sorunu",
+            "pearlSize": "İnci, yarım inci veya trok ölçüsü",
+            "fabric": "Kumaş tipi ve bitmiş ürün",
+            "production": "Günlük adet ve teslimat ülkesi"
+        }
     },
     "Footer": {
-        "about": "Pearl Machine, otomatik inci ve trok çakma teknolojisinde uzmanlaşmış, tekstil endüstrisi için hassas makineler sağlayan küresel bir liderdir.",
+        "about": "Pearl Machine, hazır giyim ve tekstil üretimi için otomatik inci, yarım inci ve trok çakma makineleri sunar.",
         "quickLinks": "Hızlı Bağlantılar",
         "contact": "Bize Ulaşın",
         "address": "İsmetpaşa, 155sk. No:23, 34270 Sultangazi/İstanbul, Türkiye",
@@ -41,9 +61,25 @@
         "rights": "Tüm Hakları Saklıdır."
     },
     "Products": {
-        "title": "Makinelerimiz",
-        "description": "İşiniz için yüksek performanslı tekstil makineleri",
-        "viewDetails": "Detayları Gör"
+        "title": "İnci Çakma Makineleri",
+        "description": "Otomatik inci, yarım inci ve bilgisayarlı inci desen makinelerini hız, inci ölçüsü, renk ve kullanım alanına göre karşılaştırın.",
+        "viewDetails": "Detayları Gör",
+        "table": {
+            "model": "Model",
+            "bestFor": "Kullanım alanı",
+            "action": "Detay"
+        }
+    },
+    "About": {
+        "eyebrow": "Pearl Machine Hakkında",
+        "title": "Tekstil üretimi için otomatik inci çakma makineleri",
+        "intro": "Pearl Machine, hazır giyim ve tekstil işlerinde inci, yarım inci ve trok uygulaması için kullanılan makinelere odaklanır. Katalog, teklif istemeden önce makine kabiliyetini karşılaştırmak isteyen alıcılar için hazırlanmıştır.",
+        "points": {
+            "catalog": "Ürün aralığında iki renkli inci makineleri, dört renkli inci makineleri, yarım inci modelleri ve bilgisayarlı desen makineleri bulunur.",
+            "specs": "Listelenen her makinede hız, inci ölçüsü, makine boyutu, ağırlık, hava kompresörü ihtiyacı ve güç tüketimi gibi pratik bilgiler yer alır.",
+            "contact": "Satış talepleri İstanbul iletişim adresinden İngilizce, Türkçe ve Arapça olarak yanıtlanır."
+        },
+        "contactTitle": "Firma iletişimi"
     },
     "ProductDetails": {
         "specs": "Teknik Özellikler",
@@ -65,7 +101,8 @@
         "shippingTitle": "Global Nakliye",
         "shippingDesc": "Dünya Çapında Lojistik",
         "responseTime": "Yanıt süresi genellikle 24 iş saati içindedir.",
-        "relatedProducts": "Diğer Makineleri İnceleyin"
+        "relatedProducts": "Diğer Makineleri İnceleyin",
+        "bestFor": "Kullanım alanı"
     },
     "Contact": {
         "title": "Bize Ulaşın",
@@ -81,7 +118,11 @@
         "form": {
             "name": "Ad Soyad",
             "email": "E-posta Adresi",
+            "company": "Şirket",
+            "country": "Ülke",
             "phone": "Telefon Numarası",
+            "productInterest": "İlgilenilen Makine",
+            "quantity": "Beklenen Adet",
             "message": "Mesajınız",
             "submit": "Mesaj Gönder",
             "success": "Mesajınız başarıyla gönderildi!",

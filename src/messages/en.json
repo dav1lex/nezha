@@ -12,23 +12,43 @@
         "system": "System"
     },
     "Index": {
-        "title": "Pearl Machine - Industrial Excellence",
-        "description": "Maximize production speed with Pearl Machine's premium automatic pearl and stud attaching technology. Precision engineering for the global textile industry.",
-        "heroTitle": "The Standard in Pearl Attaching Tech",
-        "heroSubtitle": "Precision engineering for the global textile industry. Experience unmatched speed and reliability.",
-        "heroBadge": "Leading Industrial Provider",
-        "browseMachines": "Browse Catalog",
+        "title": "Automatic Pearl & Stud Attaching Machines",
+        "description": "Compare automatic pearl, half pearl and stud attaching machines for garment and textile production. Request a quote from Pearl Machine in Istanbul.",
+        "heroTitle": "Automatic Pearl & Stud Attaching Machines for Textile Production",
+        "heroSubtitle": "Pearl Machine supplies automatic pearl, half pearl and stud attaching machines for garment factories, textile workshops and accessory production lines. Compare the models, check the specs and request the right setup before you buy.",
+        "heroBadge": "Textile machinery from Istanbul",
+        "heroImageCaption": "UGR-906-NW dual-color pearl attaching machine.",
+        "browseMachines": "Compare Machines",
         "viewCatalog": "View Entire Catalog",
-        "whyChooseUs": "Why Leading Brands Choose Us",
-        "experience": "Modern Innovation",
-        "experienceDesc": "Cutting-edge technology designed for the next generation of textile manufacturing.",
-        "quality": "Patented Precision",
-        "qualityDesc": "Patented high-speed technology with up to 275 pcs/min capacity.",
-        "support": "Global Support",
-        "supportDesc": "Engineered for 24/7 industrial use with global on-site maintenance."
+        "applicationTitle": "For pearl, half pearl and stud work on garments",
+        "applicationDescription": "The catalog covers upper-supply pearl attaching machines, four-color pearl machines and computerized pattern work. Each model page lists speed, pearl size, power, air compressor needs, machine weight and work area so buyers can qualify the machine before contacting sales.",
+        "experience": "Clean placement",
+        "experienceDesc": "Laser marking and upper attaching help operators place pearls on the intended point without marking the reverse side of the garment.",
+        "quality": "Production speed",
+        "qualityDesc": "Standard pearl models list 190 pieces per minute. The computerized UGR-NF-D9 supports 100 to 280 rpm, with higher speed available when required.",
+        "support": "Sales contact",
+        "supportDesc": "Send your pearl size, fabric type, production volume and target machine model. Pearl Machine replies from its Istanbul contact office.",
+        "stats": {
+            "speedValue": "190 pcs/min",
+            "speedLabel": "standard pearl models",
+            "sizeValue": "4 to 16 mm",
+            "sizeLabel": "workable pearl size",
+            "colorsValue": "2 or 4 colors",
+            "colorsLabel": "selected models",
+            "locationValue": "Istanbul",
+            "locationLabel": "sales contact"
+        },
+        "quoteTitle": "What to send before asking for a quote",
+        "quoteDescription": "A good machine recommendation depends on the garment, pearl type and daily production target. Send these details and the sales team can point you to the right model faster.",
+        "quoteItems": {
+            "machine": "Target model or production problem",
+            "pearlSize": "Pearl, half pearl or stud size",
+            "fabric": "Fabric type and finished product",
+            "production": "Daily quantity and country of delivery"
+        }
     },
     "Footer": {
-        "about": "Pearl Machine is a global leader in providing precision machinery for the textile industry, specializing in automatic pearl and stud attachment technology.",
+        "about": "Pearl Machine supplies automatic pearl, half pearl and stud attaching machines for garment and textile production.",
         "quickLinks": "Quick Links",
         "contact": "Contact Us",
         "address": "İsmetpaşa, 155sk. No:23, 34270 Sultangazi/İstanbul, Türkiye",
@@ -41,9 +61,25 @@
         "rights": "All Rights Reserved."
     },
     "Products": {
-        "title": "Our Machines",
-        "description": "High-performance textile machinery for your business",
-        "viewDetails": "View Details"
+        "title": "Pearl Attaching Machines",
+        "description": "Compare automatic pearl, half pearl and computerized pearl design machines by speed, pearl size, colors and use case.",
+        "viewDetails": "View Details",
+        "table": {
+            "model": "Model",
+            "bestFor": "Best for",
+            "action": "Details"
+        }
+    },
+    "About": {
+        "eyebrow": "About Pearl Machine",
+        "title": "Automatic pearl attaching machines for textile production",
+        "intro": "Pearl Machine focuses on machinery for pearl, half pearl and stud application in garment and textile work. The catalog is built for buyers who need to compare machine capability before requesting a quote.",
+        "points": {
+            "catalog": "The product range includes two-color pearl machines, four-color pearl machines, half pearl models and computerized pattern machines.",
+            "specs": "Each listed machine includes practical specs such as speed, pearl size, machine size, weight, air compressor need and power consumption.",
+            "contact": "Sales inquiries are handled through the Istanbul contact address in English, Turkish and Arabic."
+        },
+        "contactTitle": "Company contact"
     },
     "ProductDetails": {
         "specs": "Specifications",
@@ -65,7 +101,8 @@
         "shippingTitle": "Global Shipping",
         "shippingDesc": "Worldwide Logistics",
         "responseTime": "Response time typically within 24 business hours.",
-        "relatedProducts": "Explore Other Machines"
+        "relatedProducts": "Explore Other Machines",
+        "bestFor": "Best for"
     },
     "Contact": {
         "title": "Contact Us",
@@ -81,7 +118,11 @@
         "form": {
             "name": "Full Name",
             "email": "Email Address",
+            "company": "Company",
+            "country": "Country",
             "phone": "Phone Number",
+            "productInterest": "Machine Interest",
+            "quantity": "Expected Quantity",
             "message": "Message",
             "submit": "Send Message",
             "success": "Message sent successfully!",

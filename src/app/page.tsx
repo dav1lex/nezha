@@ -1,15 +1,14 @@
-'use client';
+import type { Metadata } from 'next';
+import { baseUrl } from '@/lib/seo';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
+  alternates: {
+    canonical: '/en',
+  },
+};
 
-// Dev-mode forward: visiting `/` in `next dev` redirects to `/en`.
-// In production, `public/_redirects` (`/  /en  302`) handles this at the edge
-// before this page is ever served, so users never see the empty page.
+// Production redirects `/` to `/en` through public/_redirects.
 export default function RootPage() {
-  const router = useRouter();
-  useEffect(() => {
-    router.replace('/en');
-  }, [router]);
   return null;
 }

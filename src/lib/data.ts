@@ -14,6 +14,11 @@ export interface Machine {
         ar: string[];
         tr: string[];
     };
+    bestFor: {
+        en: string;
+        ar: string;
+        tr: string;
+    };
     specs: {
         label: string; // Translation key
         value: string;
@@ -66,6 +71,11 @@ export const machines: Machine[] = [
                 "Üstten çakma ile net görüş ve rahat çalışma",
                 "Güçlü dayanıklılık ve minimum hata oranı için mükemmel tasarım"
             ]
+        },
+        bestFor: {
+            en: "Garment workshops that need two pearl colors in the same size without changing machine parts.",
+            ar: "ورش الملابس التي تحتاج إلى لونين من اللؤلؤ بنفس المقاس دون تغيير أجزاء الماكينة.",
+            tr: "Makine parçası değiştirmeden aynı ölçüde iki inci rengi çalışmak isteyen hazır giyim atölyeleri."
         },
         specs: [
             { label: "speed", value: "190 pcs. / minute" },
@@ -124,6 +134,11 @@ export const machines: Machine[] = [
                 "Güçlü dayanıklılık ve minimum hata oranı için mükemmel tasarım"
             ]
         },
+        bestFor: {
+            en: "Production lines that use up to four pearl colors in the same size on garments and textile panels.",
+            ar: "خطوط الإنتاج التي تستخدم حتى أربعة ألوان من اللؤلؤ بنفس المقاس على الملابس وقطع النسيج.",
+            tr: "Giysi ve tekstil panellerinde aynı ölçüde dört inci rengine kadar çalışan üretim hatları."
+        },
         specs: [
             { label: "headSize", value: "230mm" },
             { label: "speed", value: "190 pcs. / minute" },
@@ -175,6 +190,11 @@ export const machines: Machine[] = [
                 "Üstten çakma ile net görüş ve rahat çalışma",
                 "Güçlü dayanıklılık ve minimum hata oranı için mükemmel tasarım"
             ]
+        },
+        bestFor: {
+            en: "Factories that attach both standard pearls and half pearls on varied garment designs.",
+            ar: "المصانع التي تثبت اللؤلؤ القياسي ونصف اللؤلؤ على تصاميم ملابس مختلفة.",
+            tr: "Farklı giysi tasarımlarında standart inci ve yarım inci çakan fabrikalar."
         },
         specs: [
             { label: "speed", value: "190 pcs./min (pearl) 160 pcs./min (half pearl)" },
@@ -230,6 +250,11 @@ export const machines: Machine[] = [
                 "dst, rst dosyaları (Roland, Sierra) ile uyumludur",
                 "Desen yapma programı ve temel alet seti dahildir"
             ]
+        },
+        bestFor: {
+            en: "Computerized pattern work where pearl placement is controlled from dst or rst design files.",
+            ar: "أعمال الزخرفة المحوسبة حيث يتم التحكم في موضع اللؤلؤ من ملفات تصميم dst أو rst.",
+            tr: "İnci yerleşiminin dst veya rst desen dosyalarıyla kontrol edildiği bilgisayarlı desen işleri."
         },
         specs: [
             { label: "workSpace", value: "420 mm (W) x 330 mm (L)" },

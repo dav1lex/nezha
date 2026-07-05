@@ -2,7 +2,8 @@
 
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/routing"
-import { Cpu, Mail, Phone, MapPin, Clock, Facebook, Instagram, Linkedin, Twitter, MessageCircle } from "lucide-react"
+import { Cpu, Mail, Phone, MapPin, Clock, Facebook, Instagram } from "lucide-react"
+import { company } from "@/lib/seo"
 
 export function Footer() {
     const t = useTranslations('Footer')
@@ -28,13 +29,13 @@ export function Footer() {
                             {t('about')}
                         </p>
                         <div className="flex items-center gap-4">
-                            <a href="https://www.facebook.com/profile.php?id=61553416411613#" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full border border-border hover:bg-primary hover:text-primary-foreground transition-all">
+                            <a href={company.facebook} target="_blank" rel="noopener noreferrer" className="flex h-11 w-11 items-center justify-center rounded-full border border-border hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Pearl Machine on Facebook">
                                 <Facebook className="h-4 w-4" />
                             </a>
-                            <a href="https://www.instagram.com/pearl_machine" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full border border-border hover:bg-primary hover:text-primary-foreground transition-all">
+                            <a href={company.instagram} target="_blank" rel="noopener noreferrer" className="flex h-11 w-11 items-center justify-center rounded-full border border-border hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Pearl Machine on Instagram">
                                 <Instagram className="h-4 w-4" />
                             </a>
-                            <a href="https://wa.me/905325576993" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full border border-border hover:bg-[#25D366] hover:text-white transition-all">
+                            <a href={company.whatsapp} target="_blank" rel="noopener noreferrer" className="flex h-11 w-11 items-center justify-center rounded-full border border-border hover:bg-[#25D366] hover:text-white transition-all" aria-label="Pearl Machine on WhatsApp">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"
@@ -59,6 +60,7 @@ export function Footer() {
                         <ul className="space-y-4">
                             {[
                                 { name: tNav('home'), href: "/" },
+                                { name: tNav('about'), href: "/about" },
                                 { name: tNav('products'), href: "/products" },
                                 { name: tNav('contact'), href: "/contact" },
                             ].map((link, i) => (
@@ -88,7 +90,7 @@ export function Footer() {
                                 <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                                     <Phone className="h-4 w-4" />
                                 </div>
-                                <a href={`tel:${t('phone')}`} className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">
+                                <a href={`tel:${company.phoneUri}`} className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">
                                     {t('phone')}
                                 </a>
                             </li>

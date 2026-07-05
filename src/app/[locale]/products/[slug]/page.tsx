@@ -10,6 +10,7 @@ import { Separator } from '@/components/ui/separator';
 import { CheckCircle2, ChevronRight, Home, ShieldCheck, Globe } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 import type { Metadata } from 'next';
+import { absoluteUrl, baseUrl, languageAlternates, productImageAlt, productSeoName } from '@/lib/seo';
 
 export async function generateStaticParams() {
     return machines.map((machine) => ({ slug: machine.slug }));
@@ -26,36 +27,35 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         };
     }
 
+    const seoName = productSeoName(machine);
+
     return {
-        title: `${machine.name} | Pearl Machine`,
+        metadataBase: new URL(baseUrl),
+        title: seoName,
         description: machine.description[locale as 'en' | 'ar' | 'tr'],
         alternates: {
             canonical: `/${locale}/products/${slug}`,
-            languages: {
-                'en': `/en/products/${slug}`,
-                'tr': `/tr/products/${slug}`,
-                'ar': `/ar/products/${slug}`,
-            },
+            languages: languageAlternates(`/products/${slug}`),
         },
         openGraph: {
-            title: `${machine.name} | Pearl Machine`,
+            title: `${seoName} | Pearl Machine`,
             description: machine.description[locale as 'en' | 'ar' | 'tr'],
             url: `https://pearlmachine.com/${locale}/products/${slug}`,
             images: [
                 {
-                    url: machine.images[0],
+                    url: absoluteUrl(machine.images[0]),
                     width: 1200,
                     height: 630,
-                    alt: machine.name,
+                    alt: productImageAlt(machine),
                 }
             ],
             type: 'website',
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${machine.name} | Pearl Machine`,
+            title: `${seoName} | Pearl Machine`,
             description: machine.description[locale as 'en' | 'ar' | 'tr'],
-            images: [machine.images[0]],
+            images: [absoluteUrl(machine.images[0])],
         },
     };
 }
@@ -75,12 +75,15 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
     const currentLocale = locale as 'en' | 'ar' | 'tr';
     const otherMachines = machines.filter(m => m.slug !== slug).slice(0, 3);
+    const seoName = productSeoName(machine);
 
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'Product',
-        name: machine.name,
-        image: machine.images,
+        name: seoName,
+        sku: machine.id.toUpperCase(),
+        mpn: machine.name,
+        image: machine.images.map((image) => absoluteUrl(image)),
         description: machine.description[currentLocale],
         brand: {
             '@type': 'Brand',
@@ -91,8 +94,37 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             url: `https://pearlmachine.com/${locale}/products/${slug}`,
             availability: 'https://schema.org/InStock',
             priceCurrency: 'USD',
-            price: '0', // Request for Quote
+            priceSpecification: {
+                '@type': 'PriceSpecification',
+                priceCurrency: 'USD',
+                description: 'Contact Pearl Machine for a current quote.',
+            },
         }
+    };
+
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: absoluteUrl(`/${locale}`),
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Products',
+                item: absoluteUrl(`/${locale}/products`),
+            },
+            {
+                '@type': 'ListItem',
+                position: 3,
+                name: seoName,
+                item: absoluteUrl(`/${locale}/products/${slug}`),
+            },
+        ],
     };
 
     return (
@@ -100,6 +132,10 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             {/* Breadcrumbs */}
             <nav className="flex items-center text-sm text-muted-foreground mb-8">
@@ -118,7 +154,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 {/* Left Column: Image Gallery + Specifications (Technical Datasheet) */}
                 <div className="space-y-12">
-                    <ProductImageGallery images={machine.images} name={machine.name} />
+                    <ProductImageGallery images={machine.images} name={productImageAlt(machine)} />
 
                     {/* Specs Table - Zebra Styled - Moved here to fill the gap */}
                     <div className="space-y-6 animate-in fade-in slide-in-from-left-4 duration-700">
@@ -170,13 +206,16 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                 <div className="lg:sticky lg:top-24 space-y-8">
                     <div>
                         <div className="flex items-center gap-3 mb-4">
-                            <h1 className="text-5xl font-black tracking-tight">{machine.name}</h1>
+                            <h1 className="text-4xl font-black tracking-tight md:text-5xl">{seoName}</h1>
                             <Badge variant="secondary" className="px-3 py-1 text-sm font-bold uppercase tracking-wider">
                                 {machine.category}
                             </Badge>
                         </div>
                         <p className="text-xl text-muted-foreground leading-relaxed">
                             {machine.description[currentLocale]}
+                        </p>
+                        <p className="mt-4 rounded-lg border bg-secondary/30 p-4 text-sm leading-7 text-muted-foreground">
+                            <span className="font-bold text-foreground">{t('bestFor')}:</span> {machine.bestFor[currentLocale]}
                         </p>
                     </div>
 

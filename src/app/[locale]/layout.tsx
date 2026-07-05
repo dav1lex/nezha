@@ -8,6 +8,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
+import { absoluteUrl, company, languageAlternates } from '@/lib/seo';
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -26,49 +27,16 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
 
-    const title = "Pearl Machine - Premium Industrial Machinery";
-    const description = locale === 'tr'
-        ? "Birinci Sınıf Otomatik İnci ve Trok Çakma Makineleri"
+    const title = locale === 'tr'
+        ? "Pearl Machine | Otomatik İnci ve Trok Çakma Makineleri"
         : locale === 'ar'
-            ? "آلات تركيب اللؤلؤ والخرز الأوتوماتيكية المتميزة"
-            : "Premium Automatic Pearl & Stud Attaching Machinery";
-
-    const keywords = {
-        en: [
-            "pearl machine",
-            "automatic pearl setting machine",
-            "rivet attaching machine",
-            "textile machinery",
-            "stud fixing machine",
-            "industrial garment machinery",
-            "pearl machine turkey",
-            "high speed pearl attacher",
-            "automatic rivet setting machine",
-            "pearl attaching machine for textile"
-        ],
-        tr: [
-            "inci çakma makinesi",
-            "otomatik inci makinesi",
-            "trok çakma makinesi",
-            "tekstil makineleri",
-            "perçin çakma makinesi",
-            "taş yapıştırma makinesi",
-            "inci makinesi fiyatları",
-            "otomatik perçin makinesi",
-            "tekstil aksesuar makineleri",
-            "istanbul inci makinesi"
-        ],
-        ar: [
-            "ماكينة تركيب اللؤلؤ",
-            "آلة تثبيت الخرز",
-            "ماكينة كبس اللؤلؤ",
-            "آلات نسيج",
-            "ماكينة تركيب الدسر",
-            "معدات صناعة الملابس",
-            "ماكينة لؤلؤ تركية",
-            "آلة تركيب مسامير"
-        ]
-    };
+            ? "Pearl Machine | آلات تركيب اللؤلؤ والدبابيس الأوتوماتيكية"
+            : "Pearl Machine | Automatic Pearl & Stud Attaching Machines";
+    const description = locale === 'tr'
+        ? "Pearl Machine, tekstil üretimi için otomatik inci, yarım inci ve trok çakma makineleri sunar. İstanbul'dan teklif ve ürün bilgisi alın."
+        : locale === 'ar'
+            ? "توفر Pearl Machine آلات أوتوماتيكية لتركيب اللؤلؤ ونصف اللؤلؤ والدبابيس لإنتاج الملابس والمنسوجات."
+            : "Automatic pearl, half pearl and stud attaching machines for garment and textile production. Compare models and request a quote from Istanbul.";
 
     return {
         metadataBase: new URL('https://pearlmachine.com'),
@@ -77,14 +45,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
             template: `%s | Pearl Machine`
         },
         description: description,
-        keywords: keywords[locale as keyof typeof keywords] || keywords.en,
         alternates: {
             canonical: `/${locale}`,
-            languages: {
-                'en': '/en',
-                'tr': '/tr',
-                'ar': '/ar',
-            },
+            languages: languageAlternates('/'),
         },
         openGraph: {
             title: title,
@@ -93,11 +56,24 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
             siteName: 'Pearl Machine',
             locale: locale,
             type: 'website',
+            images: [
+                {
+                    url: absoluteUrl('/nt-906-nw_1.jpg'),
+                    width: 1200,
+                    height: 630,
+                    alt: 'Automatic pearl attaching machine for textile production',
+                },
+            ],
         },
         twitter: {
             card: 'summary_large_image',
             title: title,
             description: description,
+            images: [absoluteUrl('/nt-906-nw_1.jpg')],
+        },
+        robots: {
+            index: true,
+            follow: true,
         },
     };
 }
@@ -123,27 +99,43 @@ export default async function LocaleLayout({
     const organizationSchema = {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "Pearl Machine",
+        "name": company.name,
+        "legalName": company.legalName,
         "url": "https://pearlmachine.com",
         "logo": "https://pearlmachine.com/logo.png",
         "sameAs": [
-            "https://www.instagram.com/pearlmachine",
-            "https://www.facebook.com/pearlmachine",
+            company.instagram,
+            company.facebook,
         ],
         "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+90-532-557-69-93",
+            "telephone": company.phoneUri,
             "contactType": "sales",
             "areaServed": "Global",
             "availableLanguage": ["English", "Turkish", "Arabic"]
         },
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "İsmetpaşa, 155sk. No:23",
-            "addressLocality": "Sultangazi",
-            "addressRegion": "İstanbul",
-            "postalCode": "34270",
-            "addressCountry": "TR"
+            "streetAddress": company.streetAddress,
+            "addressLocality": company.locality,
+            "addressRegion": company.region,
+            "postalCode": company.postalCode,
+            "addressCountry": company.country
+        }
+    };
+
+    const websiteSchema = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": company.name,
+        "url": "https://pearlmachine.com",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://pearlmachine.com/en/products?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
         }
     };
 
@@ -155,6 +147,10 @@ export default async function LocaleLayout({
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
                 />
                 {cfBeaconToken && (
                     <script

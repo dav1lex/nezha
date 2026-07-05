@@ -1,12 +1,34 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import type { Metadata } from 'next';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/button';
+import { absoluteUrl, baseUrl, company, languageAlternates } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
+    const title = locale === 'tr' ? 'İletişim' : locale === 'ar' ? 'اتصل بنا' : 'Contact Pearl Machine';
+    const description = locale === 'tr'
+        ? "Otomatik inci ve trok çakma makineleri için Pearl Machine ile iletişime geçin. Model, ülke ve üretim ihtiyacınızı gönderin."
+        : locale === 'ar'
+            ? 'تواصل مع Pearl Machine بخصوص آلات تركيب اللؤلؤ والدبابيس الأوتوماتيكية. أرسل الموديل والبلد واحتياج الإنتاج.'
+            : 'Contact Pearl Machine for automatic pearl and stud attaching machines. Send your model interest, country and production requirements.';
+
     return {
-        title: locale === 'tr' ? 'İletişim' : locale === 'ar' ? 'اتصل بنا' : 'Contact Us',
-        description: 'Get in touch with Pearl Machine for industrial machinery inquiries.',
+        metadataBase: new URL(baseUrl),
+        title,
+        description,
+        alternates: {
+            canonical: `/${locale}/contact`,
+            languages: languageAlternates('/contact'),
+        },
+        openGraph: {
+            title: `${title} | Pearl Machine`,
+            description,
+            url: absoluteUrl(`/${locale}/contact`),
+        },
     };
 }
 
@@ -16,8 +38,30 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
     const t = await getTranslations('Contact');
 
+    const localBusinessSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: company.name,
+        url: absoluteUrl('/'),
+        telephone: company.phoneUri,
+        email: company.email,
+        address: {
+            '@type': 'PostalAddress',
+            streetAddress: company.streetAddress,
+            addressLocality: company.locality,
+            addressRegion: company.region,
+            postalCode: company.postalCode,
+            addressCountry: company.country,
+        },
+        sameAs: [company.instagram, company.facebook],
+    };
+
     return (
         <div className="container mx-auto px-4 py-16">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+            />
             <div className="max-w-5xl mx-auto space-y-12">
                 <div className="text-center space-y-4">
                     <h1 className="text-5xl font-black tracking-tight">{t('title')}</h1>
@@ -26,17 +70,17 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
                 {/* Contact Info - Horizontal Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-secondary/20 hover:bg-secondary/40 transition-colors">
+                    <div className="flex flex-col items-center text-center p-6 rounded-lg bg-secondary/20 hover:bg-secondary/40 transition-colors">
                         <div className="p-3 bg-background rounded-full text-primary mb-4 shadow-sm">
                             <Phone className="h-6 w-6" />
                         </div>
                         <h3 className="font-bold text-lg mb-1">{t('phoneLabel')}</h3>
-                        <a href={`tel:${t('phone')}`} className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                        <a href={`tel:${company.phoneUri}`} className="text-muted-foreground hover:text-primary transition-colors text-sm">
                             {t('phone')}
                         </a>
                     </div>
 
-                    <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-secondary/20 hover:bg-secondary/40 transition-colors">
+                    <div className="flex flex-col items-center text-center p-6 rounded-lg bg-secondary/20 hover:bg-secondary/40 transition-colors">
                         <div className="p-3 bg-background rounded-full text-[#25D366] text-white mb-4 shadow-sm">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +103,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                         </a>
                     </div>
 
-                    <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-secondary/20 hover:bg-secondary/40 transition-colors">
+                    <div className="flex flex-col items-center text-center p-6 rounded-lg bg-secondary/20 hover:bg-secondary/40 transition-colors">
                         <div className="p-3 bg-background rounded-full text-primary mb-4 shadow-sm">
                             <Mail className="h-6 w-6" />
                         </div>
@@ -69,7 +113,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                         </a>
                     </div>
 
-                    <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-secondary/20 hover:bg-secondary/40 transition-colors">
+                    <div className="flex flex-col items-center text-center p-6 rounded-lg bg-secondary/20 hover:bg-secondary/40 transition-colors">
                         <div className="p-3 bg-background rounded-full text-primary mb-4 shadow-sm">
                             <MapPin className="h-6 w-6" />
                         </div>
@@ -80,6 +124,51 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                     </div>
                 </div>
 
+                <div className="grid gap-8 rounded-lg border bg-card p-6 md:grid-cols-[0.8fr_1.2fr] md:p-8">
+                    <div>
+                        <h2 className="mb-3 text-2xl font-bold">{t('formHeader')}</h2>
+                        <p className="leading-7 text-muted-foreground">{t('formSubheader')}</p>
+                    </div>
+                    <form action={`mailto:${company.email}`} method="post" encType="text/plain" className="grid gap-4">
+                        <div className="grid gap-4 sm:grid-cols-2">
+                            <div className="space-y-2">
+                                <Label htmlFor="name">{t('form.name')}</Label>
+                                <Input id="name" name="name" autoComplete="name" required />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="email">{t('form.email')}</Label>
+                                <Input id="email" name="email" type="email" autoComplete="email" required />
+                            </div>
+                        </div>
+                        <div className="grid gap-4 sm:grid-cols-2">
+                            <div className="space-y-2">
+                                <Label htmlFor="company">{t('form.company')}</Label>
+                                <Input id="company" name="company" autoComplete="organization" />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="country">{t('form.country')}</Label>
+                                <Input id="country" name="country" autoComplete="country-name" />
+                            </div>
+                        </div>
+                        <div className="grid gap-4 sm:grid-cols-2">
+                            <div className="space-y-2">
+                                <Label htmlFor="productInterest">{t('form.productInterest')}</Label>
+                                <Input id="productInterest" name="productInterest" placeholder="UGR-906-NW" />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="quantity">{t('form.quantity')}</Label>
+                                <Input id="quantity" name="quantity" />
+                            </div>
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="message">{t('form.message')}</Label>
+                            <Textarea id="message" name="message" rows={5} required />
+                        </div>
+                        <Button type="submit" className="w-full sm:w-fit">
+                            {t('form.submit')}
+                        </Button>
+                    </form>
+                </div>
             </div>
         </div>
     );

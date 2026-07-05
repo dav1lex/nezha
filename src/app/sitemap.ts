@@ -1,13 +1,26 @@
 import { MetadataRoute } from 'next';
 import { machines } from '@/lib/data';
+import { baseUrl, locales } from '@/lib/seo';
 
 export const dynamic = 'force-static';
-export const baseUrl = 'https://pearlmachine.com';
+
+const lastModified = new Date('2026-07-05');
+
+function alternatesFor(path: string) {
+    return {
+        languages: {
+            en: `${baseUrl}/en${path}`,
+            tr: `${baseUrl}/tr${path}`,
+            ar: `${baseUrl}/ar${path}`,
+            'x-default': `${baseUrl}/en${path}`,
+        },
+    };
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const locales = ['en', 'ar', 'tr'];
     const routes = [
         '', // Home
+        '/about',
         '/products',
         '/contact',
     ];
@@ -19,9 +32,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
         routes.forEach((route) => {
             sitemap.push({
                 url: `${baseUrl}/${locale}${route}`,
-                lastModified: new Date(),
+                lastModified,
                 changeFrequency: 'weekly',
                 priority: route === '' ? 1 : 0.8,
+                alternates: alternatesFor(route),
             });
         });
     });
@@ -31,9 +45,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
         locales.forEach((locale) => {
             sitemap.push({
                 url: `${baseUrl}/${locale}/products/${machine.slug}`,
-                lastModified: new Date(),
+                lastModified,
                 changeFrequency: 'weekly',
                 priority: 0.9,
+                alternates: alternatesFor(`/products/${machine.slug}`),
             });
         });
     });

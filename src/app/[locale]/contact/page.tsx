@@ -1,6 +1,4 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { ContactForm } from '@/components/contact-form';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import type { Metadata } from 'next';
 
@@ -82,20 +80,6 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                     </div>
                 </div>
 
-                {/* Contact Form */}
-                <div className="max-w-3xl mx-auto w-full">
-                    <Card className="border-border/50 shadow-2xl shadow-primary/5">
-                        <CardHeader className="space-y-2 p-8 text-center">
-                            <CardTitle className="text-3xl font-bold">{t('formHeader')}</CardTitle>
-                            <CardDescription className="text-lg">
-                                {t('formSubheader')}
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent className="p-8 pt-0">
-                            <ContactForm />
-                        </CardContent>
-                    </Card>
-                </div>
             </div>
         </div>
     );

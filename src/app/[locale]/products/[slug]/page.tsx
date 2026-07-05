@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { machines } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
-import { ContactDialog } from '@/components/contact-dialog';
+import { Button } from '@/components/ui/button';
 import { ProductImageGallery } from '@/components/product-image-gallery';
 import { ProductCard } from '@/components/product-card';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
@@ -201,9 +201,11 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                     </div>
 
                     {/* Call to Action */}
-                    <div className="pt-6">
-                        <ContactDialog productName={machine.name} />
-                        <p className="text-center text-xs text-muted-foreground mt-4 italic">
+                    <div className="pt-6 flex flex-col gap-3">
+                        <Button asChild size="lg" className="w-full text-lg h-12">
+                            <Link href="/contact">{t('getQuote')}</Link>
+                        </Button>
+                        <p className="text-center text-xs text-muted-foreground italic">
                             {t('responseTime')}
                         </p>
                     </div>

@@ -27,8 +27,8 @@ export const machines: Machine[] = [
         name: "UGR-906-NW",
         category: "pearl",
         images: [
-            "https://cdn.pearlmachine.com/nt-906-nw_1.jpg",
-            "https://cdn.pearlmachine.com/nt-906-nw_2.jpg"
+            "/nt-906-nw_1.jpg",
+            "/nt-906-nw_2.jpg"
         ],
         description: {
             en: "Advanced dual-color pearl attaching machine. Two colors in the same size can be worked without changing any part, featuring a convenient upper attaching system.",
@@ -84,8 +84,8 @@ export const machines: Machine[] = [
         name: "UGR-906-NF",
         category: "pearl",
         images: [
-            "https://cdn.pearlmachine.com/nt-906-nf_1.jpg",
-            "https://cdn.pearlmachine.com/nt-906-nf_2.jpg"
+            "/nt-906-nf_1.jpg",
+            "/nt-906-nf_2.jpg"
         ],
         description: {
             en: "High-capacity four-color pearl machine. Features a 230mm head size and the ability to work with four colors simultaneously without mechanical changes.",
@@ -142,8 +142,8 @@ export const machines: Machine[] = [
         name: "UGR-906-ND-W",
         category: "pearl",
         images: [
-            "https://cdn.pearlmachine.com/nt-906-nd-w_1.jpg",
-            "https://cdn.pearlmachine.com/nt-906-nd-w_2.jpg"
+            "/nt-906-nd-w_1.jpg",
+            "/nt-906-nd-w_2.jpg"
         ],
         description: {
             en: "Versatile machine for both standard and half pearls. Engineered for high precision and efficiency with various pearl types.",
@@ -194,8 +194,8 @@ export const machines: Machine[] = [
         name: "UGR-NF-D9",
         category: "ultrasonic",
         images: [
-            "https://cdn.pearlmachine.com/nt-906-nf_d9_1.jpg",
-            "https://cdn.pearlmachine.com/NT906-NF-D9-2.jpg"
+            "/nt-906-nf_d9_1.jpg",
+            "/NT906-NF-D9-2.jpg"
         ],
         description: {
             en: "Fully computerized high-speed design machine. Supports up to four types of pearls simultaneously with advanced design software compatibility.",

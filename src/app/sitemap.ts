@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { machines } from '@/lib/data';
 
+export const dynamic = 'force-static';
 export const baseUrl = 'https://pearlmachine.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {

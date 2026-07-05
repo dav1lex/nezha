@@ -1,9 +1,12 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ProductCard } from '@/components/product-card';
 import { machines } from '@/lib/data';
 
-export default function ProductsPage() {
-    const t = useTranslations('Products');
+export default async function ProductsPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+
+    const t = await getTranslations('Products');
 
     return (
         <div className="container mx-auto px-4 py-8">

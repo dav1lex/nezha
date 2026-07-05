@@ -1,14 +1,17 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/routing';
-import { ArrowRight, CheckCircle2, Award, Globe2, ShieldCheck, Factory, Zap, Target } from 'lucide-react';
+import { ArrowRight, Award, Globe2, Zap, Target } from 'lucide-react';
 import { ProductCard } from '@/components/product-card';
 import { machines } from '@/lib/data';
 
-export default function HomePage() {
-    const t = useTranslations('Index');
-    const tNav = useTranslations('Navbar');
-    const tProd = useTranslations('Products');
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+
+    const t = await getTranslations('Index');
+    const tNav = await getTranslations('Navbar');
+    const tProd = await getTranslations('Products');
 
     return (
         <div className="flex flex-col gap-24 pb-20">

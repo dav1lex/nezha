@@ -4,7 +4,9 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: 'export',
     images: {
+        unoptimized: true,
         remotePatterns: [
             {
                 protocol: 'https',
@@ -15,11 +17,10 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'pearlmachine.com',
                 pathname: '/**',
-            }
+            },
         ],
     },
-    // Optional: add trailing slash configuration if needed for certain SEO setups
-    // trailingSlash: true,
+    reactStrictMode: true,
 };
 
 export default withNextIntl(nextConfig);

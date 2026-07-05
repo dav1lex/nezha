@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ContactForm } from '@/components/contact-form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mail, MapPin, Phone } from 'lucide-react';
@@ -12,8 +12,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     };
 }
 
-export default function ContactPage() {
-    const t = useTranslations('Contact');
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+
+    const t = await getTranslations('Contact');
 
     return (
         <div className="container mx-auto px-4 py-16">

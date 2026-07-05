@@ -1,20 +1,23 @@
-import { getTranslations } from 'next-intl/server';
-import Image from 'next/image';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { machines } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
 import { ContactDialog } from '@/components/contact-dialog';
 import { ProductImageGallery } from '@/components/product-image-gallery';
 import { ProductCard } from '@/components/product-card';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle2, ChevronRight, Home, ShieldCheck, Zap, Globe, Cog } from 'lucide-react';
+import { CheckCircle2, ChevronRight, Home, ShieldCheck, Globe } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 import type { Metadata } from 'next';
 
+export async function generateStaticParams() {
+    return machines.map((machine) => ({ slug: machine.slug }));
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string, locale: string }> }): Promise<Metadata> {
     const { slug, locale } = await params;
+    setRequestLocale(locale);
     const machine = machines.find((m) => m.slug === slug);
 
     if (!machine) {
@@ -59,6 +62,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string, locale: string }> }) {
     const { slug, locale } = await params;
+    setRequestLocale(locale);
     const machine = machines.find((m) => m.slug === slug);
 
     if (!machine) {

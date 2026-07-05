@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { Analytics } from "@vercel/analytics/next";
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
 
@@ -20,10 +19,13 @@ const geistMono = Geist_Mono({
     subsets: ["latin"],
 });
 
+export function generateStaticParams() {
+    return routing.locales.map((locale) => ({ locale }));
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
 
-    // Simple localization for metadata
     const title = "Pearl Machine - Premium Industrial Machinery";
     const description = locale === 'tr'
         ? "Birinci Sınıf Otomatik İnci ve Trok Çakma Makineleri"
@@ -113,6 +115,8 @@ export default async function LocaleLayout({
         notFound();
     }
 
+    setRequestLocale(locale);
+
     const messages = await getMessages();
     const dir = locale === 'ar' ? 'rtl' : 'ltr';
 
@@ -125,7 +129,6 @@ export default async function LocaleLayout({
         "sameAs": [
             "https://www.instagram.com/pearlmachine",
             "https://www.facebook.com/pearlmachine",
-            // Add other social profiles if available
         ],
         "contactPoint": {
             "@type": "ContactPoint",
@@ -144,6 +147,8 @@ export default async function LocaleLayout({
         }
     };
 
+    const cfBeaconToken = process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
+
     return (
         <html lang={locale} dir={dir} suppressHydrationWarning>
             <head>
@@ -151,6 +156,13 @@ export default async function LocaleLayout({
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
                 />
+                {cfBeaconToken && (
+                    <script
+                        defer
+                        src="https://static.cloudflareinsights.com/beacon.min.js"
+                        data-cf-beacon={JSON.stringify({ token: cfBeaconToken })}
+                    />
+                )}
             </head>
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background text-foreground`}>
                 <NextIntlClientProvider messages={messages}>
@@ -165,7 +177,6 @@ export default async function LocaleLayout({
                             <main className="flex-1">{children}</main>
                             <Footer />
                         </div>
-                        <Analytics />
                     </ThemeProvider>
                 </NextIntlClientProvider>
             </body>

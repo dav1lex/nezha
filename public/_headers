@@ -1,0 +1,21 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-XSS-Protection: 1; mode=block
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+
+/robots.txt
+  Cache-Control: public, max-age=86400
+
+/logo.png
+  Cache-Control: public, max-age=86400

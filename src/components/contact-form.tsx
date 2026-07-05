@@ -33,7 +33,8 @@ export function ContactForm({ productName, onSuccess }: ContactFormProps) {
         }
 
         try {
-            const response = await fetch('/api/contact', {
+            const endpoint = process.env.NEXT_PUBLIC_CONTACT_API_URL || 'https://contact.pearlmachine.com/contact';
+            const response = await fetch(endpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
